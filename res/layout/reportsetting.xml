@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:id="@+id/scrollView"
+             android:layout_gravity="left|center_vertical" android:measureAllChildren="false">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent" android:orientation="vertical">
+
+        <TextView
+                android:id="@+id/Label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:text="@string/ReportSettingInfo"
+                android:textAlignment="center"
+                android:textColor="#AA66CC"
+                android:textSize="@dimen/TitleFont" />
+
+        <EditText
+                android:id="@+id/nReportingMedia"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:gravity="fill_horizontal"
+                android:hint="@string/ReportSettingMedia"
+                android:inputType="text"
+                android:lines="1"
+                android:selectAllOnFocus="true"
+
+                >
+
+        </EditText>
+        <EditText
+                android:id="@+id/nReportPhone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:gravity="fill_horizontal"
+                android:hint="@string/ReportSettingPhone"
+                android:inputType="phone"
+                android:lines="1"
+                android:selectAllOnFocus="true"
+
+                >
+
+        </EditText>
+        <EditText
+                android:id="@+id/nReportingUrl"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:gravity="fill_horizontal"
+                android:hint="@string/ReportSettingUrl"
+                android:inputType="textUri"
+                android:lines="1"
+                android:selectAllOnFocus="true"
+
+                >
+
+        </EditText>
+        <EditText
+                android:id="@+id/nReportingPeriod"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:gravity="fill_horizontal"
+                android:hint="@string/ReportPeriod"
+                android:inputType="phone"
+                android:lines="1"
+                android:selectAllOnFocus="true">
+
+
+
+        </EditText>
+        <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent">
+            <Button
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/Register"
+
+                    android:id="@+id/nRegister"
+                    android:clickable="true"
+                    android:layout_width="fill_parent"
+                    android:layout_weight="1">
+            </Button>
+            <Button
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/Clear"
+
+                    android:id="@+id/nClear"
+                    android:clickable="true"
+                    android:layout_width="fill_parent"
+                    android:layout_weight="1">
+            </Button>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent">
+
+            <Button
+                    android:id="@+id/nBack"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/Back" >
+            </Button>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>
