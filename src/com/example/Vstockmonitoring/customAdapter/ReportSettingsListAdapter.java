@@ -50,7 +50,7 @@ public class ReportSettingsListAdapter extends ArrayAdapter<ReportSetting> {
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 convertView = inflater.inflate(R.layout.reportsettinglist ,parent,false);
             }
-            TextView tvPhone = (TextView) convertView.findViewById(R.id.nReportPhone );
+            TextView tvPhone = (TextView) convertView.findViewById(R.id.nReportPhoneList );
              reportSetting = data.get(position);
              tvPhone.setText(reportSetting.getReport_phone());
             return  convertView;

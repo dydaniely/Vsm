@@ -94,8 +94,6 @@ public class EditReportSetting extends Activity {
     }
 
     private void deleteReportSetting(View viewById) {
-
-
         Toast.makeText(getApplicationContext(),"Data Deletion is Not Allowed",Toast.LENGTH_LONG).show();
     }
 

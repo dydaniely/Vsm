@@ -106,4 +106,5 @@ public class ReportSettingListActivity extends Activity implements AdapterView.O
         intent.putExtra("reportSetting_period",reportSetting.getReport_period());
         this.startActivity(intent);
     }
+
 }
