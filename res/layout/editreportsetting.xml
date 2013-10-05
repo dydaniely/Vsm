@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="wrap_content"
+             android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:id="@+id/scrollView"
              android:layout_gravity="left|center_vertical" android:measureAllChildren="false">
@@ -29,7 +29,7 @@
                 android:layout_marginTop="5dp"/>
 
         <EditText
-                android:id="@+id/nReportingMedia"
+                android:id="@+id/nEditReportingMedia"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal"
@@ -50,7 +50,7 @@
                 android:id="@+id/textView2"/>
 
         <EditText
-                android:id="@+id/nReportPhone"
+                android:id="@+id/nEditReportPhone"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal"
@@ -72,7 +72,7 @@
                 android:id="@+id/textView3"/>
 
         <EditText
-                android:id="@+id/nReportingUrl"
+                android:id="@+id/nEditReportingUrl"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal"
@@ -95,7 +95,7 @@
                 android:id="@+id/textView4"/>
 
         <EditText
-                android:id="@+id/nReportingPeriod"
+                android:id="@+id/nEditReportingPeriod"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal"
