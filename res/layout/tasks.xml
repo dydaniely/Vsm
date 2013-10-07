@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
     <ListView
-            android:id="@+id/listView1"
+            android:id="@+id/lvTaskView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:entries="@array/Modification_Menu"
             android:layout_gravity="left|center_vertical"
-            android:clickable="true"/>
+            android:dividerHeight="2dp"
+            android:entries="@array/Modification_Menu"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:headerDividersEnabled="true"
+            android:longClickable="false"
+            android:stackFromBottom="false"
+            android:textAlignment="center"
+            android:textFilterEnabled="false" />
 
-    <ImageView
-            android:id="@+id/imgTasks"
-            android:layout_width="41dp"
-            android:layout_height="32dp"
-            android:layout_gravity="left"
-            android:paddingLeft="0dip"
-            android:clickable="false"
-            android:src="@drawable/background33"
-            android:baselineAlignBottom="false"/>
+    <include layout="@layout/footer_layout"/>
 
-</RelativeLayout>
+</LinearLayout>
