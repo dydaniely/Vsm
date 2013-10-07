@@ -107,4 +107,9 @@ public class ReportSettingListActivity extends Activity implements AdapterView.O
         this.startActivity(intent);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        this.onCreate(null);
+    }
 }
