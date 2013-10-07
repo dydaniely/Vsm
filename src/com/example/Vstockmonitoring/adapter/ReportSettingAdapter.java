@@ -59,4 +59,7 @@ public class ReportSettingAdapter  extends VaccineContract  {
            return database.query(DatabaseHelper.Tables.REPORT_SETTING,COLUMNS,ReportSetting.ID +"="+ rowId,null,null,null,null);
         }
 
+    public boolean deleteReportSetting(long rowId) throws  SQLException{
+        return database.delete(DatabaseHelper.Tables.REPORT_SETTING, ReportSetting.ID + "=" + rowId, null  )>0;
+    }
 }

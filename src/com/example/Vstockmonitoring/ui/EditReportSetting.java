@@ -16,6 +16,8 @@ import com.example.Vstockmonitoring.R;
 import com.example.Vstockmonitoring.adapter.ReportSettingAdapter;
 import com.example.Vstockmonitoring.model.ReportSetting;
 
+import java.sql.SQLException;
+
 /**
  * Created by DanielY on 10/4/13.
  */
@@ -61,9 +63,9 @@ public class EditReportSetting extends Activity {
         address=getIntent().getExtras().getString("reportSetting_url");
         period=getIntent().getExtras().getString("reportSetting_period");
         initControls();
-        report_media.setText(report_media.toString(), TextView.BufferType.EDITABLE);
-        report_period.setText(report_period.toString(), TextView.BufferType.EDITABLE);
-        report_phone.setText(report_phone.toString(), TextView.BufferType.EDITABLE);
+        report_media.setText(media.toString(), TextView.BufferType.EDITABLE);
+        report_period.setText(period.toString() , TextView.BufferType.EDITABLE);
+        report_phone.setText(String.valueOf(phone), TextView.BufferType.EDITABLE);
         url_address.setText(address.toString(), TextView.BufferType.EDITABLE);
 
     }
@@ -94,7 +96,14 @@ public class EditReportSetting extends Activity {
     }
 
     private void deleteReportSetting(View viewById) {
-        Toast.makeText(getApplicationContext(),"Data Deletion is Not Allowed",Toast.LENGTH_LONG).show();
+        ReportSettingAdapter dbHelper=new ReportSettingAdapter(this);
+        dbHelper.open();
+        boolean status;
+        status=dbHelper.deleteReportSetting(report_id);
+        if (status!=false){
+            Toast.makeText(getApplicationContext(),"Data Successfully Deleted  ",Toast.LENGTH_SHORT).show();
+        }
+        finish();
     }
 
     private void editReportSetting(View viewById) {
@@ -106,7 +115,7 @@ public class EditReportSetting extends Activity {
         reportSetting.setUrl_address(url_address.getText().toString());
         reportSetting.setReport_period(report_period.getText().toString());
         boolean status;
-        status=dbHelper.updateReportSetting(report_id,reportSetting.getReport_media(),Integer.valueOf(reportSetting.getReport_phone()),reportSetting.getUrl_address(),reportSetting.getReport_period());
+        status=dbHelper.updateReportSetting(report_id, reportSetting.getReport_media(), Integer.valueOf(reportSetting.getReport_phone()), reportSetting.getUrl_address(), reportSetting.getReport_period());
         if (status!=false) {
             Toast.makeText(getApplicationContext(),"Data Successfully Updated  ",Toast.LENGTH_SHORT).show();
             dbHelper.close();
