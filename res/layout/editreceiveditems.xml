@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:orientation="vertical" >
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+        <TextView
+                android:id="@+id/nEditSubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/editReceivedVaccine"  android:typeface="monospace"
+                android:textColor="@color/SubTitle"
+                android:textSize="@dimen/TitleFont"
+                android:layout_alignParentTop="true" android:layout_centerVertical="true" android:gravity="center"/>
+
+        <TextView
+                android:id="@+id/nEditSupplier"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:paddingBottom="10dp"
+                android:text="@string/Supplier"
+                android:typeface="monospace"
+                android:textAlignment="center"
+                android:gravity="center" android:layout_gravity="left|center_vertical"
+                android:layout_below="@+id/subTitle" android:layout_marginTop="10dp"/>
+        <Spinner
+                android:id="@+id/nEditSupplierSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="true"
+                android:longClickable="false"
+                android:spinnerMode="dialog"
+                android:textAlignment="textStart"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@+id/nEditSupplier"
+                android:layout_marginTop="25dp"/>
+        <EditText
+                android:id="@+id/nEditQuantity"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:hint="@string/Quantity"      android:typeface="monospace"
+                android:inputType="number"
+                android:textColor="@color/body_text_disabled"
+                android:lines="1"
+                android:selectAllOnFocus="true" android:layout_alignLeft="@+id/subTitle"
+                android:layout_below="@+id/nEditpresentaiondosepervials">
+        </EditText>
+        <EditText
+                android:id="@+id/nEditManufacturer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:gravity="left"
+                android:hint="@string/manufacturer"
+                android:typeface="monospace"
+                android:inputType="textAutoComplete"
+                android:lines="1"
+                android:textColor="@color/body_text_disabled"
+                android:selectAllOnFocus="true"
+                android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_marginTop="70dp">
+        </EditText>
+        <EditText
+                android:id="@+id/nEditpresentaiondosepervials"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:gravity="left"
+                android:hint="@string/presentationOfAntigen"
+                android:inputType="number"    android:typeface="monospace"
+                android:lines="1"       android:textColor="@color/body_text_disabled"
+                android:selectAllOnFocus="true"
+                android:layout_alignParentTop="false" android:layout_marginTop="165dp">
+        </EditText>
+        <EditText
+                android:id="@+id/nEditBatchNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:gravity="left"
+                android:hint="@string/batchNumber"
+                android:inputType="text"         android:typeface="monospace"
+                android:lines="1"          android:textColor="@color/body_text_disabled"
+                android:selectAllOnFocus="true"
+                android:layout_alignLeft="@+id/nEditSupplier" android:layout_below="@+id/nEditmanufacturer">
+        </EditText>
+        <EditText
+                android:id="@+id/nEditexpiredate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.44"
+                android:hint="@string/ExpireDate"
+                android:inputType="date|text" android:typeface="monospace"
+                android:onClick="selectDate"
+                android:labelFor="@+id/nEditSupplier" android:layout_alignLeft="@+id/nEditSupplier"
+                android:layout_below="@+id/nEditQuantity">
+        </EditText>
+        <ImageButton
+                android:id="@+id/nEditCalender "
+                android:layout_width="wrap_content"
+                android:layout_height="51dp"
+                android:contentDescription="@string/selectdate"  android:typeface="monospace"
+                android:cropToPadding="true"
+                android:onClick="selectDate"
+                android:src="@drawable/calender"
+                android:layout_alignRight="@+id/nEditQuantity" android:layout_below="@+id/nEditQuantity"/>
+
+        <Spinner
+                android:id="@+id/nEditvvmspinner"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:entries="@array/vvm_entries"
+                android:longClickable="false"
+                android:spinnerMode="dropdown"
+                android:textAlignment="textStart"
+                android:layout_alignLeft="@+id/subTitle" android:layout_below="@+id/nEditexpiredate"/>
+        </RelativeLayout>
+    </ScrollView>

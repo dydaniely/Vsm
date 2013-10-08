@@ -22,6 +22,7 @@ public class Tasks extends Activity implements AdapterView.OnItemClickListener{
     private ListView taskListView;
     private static String TaskName;
     private String VIEW_RECEIVED_ITEMS="viewReceivedItems";
+
     @Override
     public void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
@@ -40,11 +41,9 @@ public class Tasks extends Activity implements AdapterView.OnItemClickListener{
     switch(position){
         case 0:
             Intent receivedItemIntent=new Intent(this,VaccineDetailListActivity.class);
-            receivedItemIntent.putExtra("RECEIVED_ITEMS",VIEW_RECEIVED_ITEMS);
+            receivedItemIntent.putExtra("ACTIVITY",VIEW_RECEIVED_ITEMS);
             this.startActivity(receivedItemIntent);
-
-
-        }
+    }
     }
 
     @Override

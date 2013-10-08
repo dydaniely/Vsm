@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:id="@+id/scrollView"
+             android:layout_gravity="left|center_vertical" android:measureAllChildren="false">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="fill_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  android:showDividers="beginning|middle|end">
+
+        <TextView
+                android:id="@+id/Title"
+                android:layout_width="215dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/EditIssuedVaccine"
+                android:textColor="@color/Title"
+                android:textSize="@dimen/text_size_large" />
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/borderframe"
+                android:layout_marginBottom="8dp" android:layout_marginTop="8dp">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/IssuedReason"
+                    android:id="@+id/nEditSession" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+                    android:textColor="@color/body_text_disabled" android:textSize="@dimen/text_size_large"/>
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:id="@+id/radioGroupReason"
+                        android:layout_below="@+id/nEditSession" >
+                <RadioButton android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="withdrawal/Discarded"
+                             android:id="@+id/nEditRdWithdrawal"
+                             android:layout_alignParentLeft="true"
+                             android:textColor="@color/body_text_disabled"
+                             android:layout_below="@+id/nEditSession"
+                             android:layout_alignParentRight="true"
+                             android:onClick="onRadioButtonClicked"/>
+                <RadioButton android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="Session"
+                             android:textColor="@color/body_text_disabled"
+                             android:id="@+id/nEditRdSession"
+                             android:layout_alignLeft="@+id/nEditSession"
+                             android:layout_below="@+id/nEditSession"
+                             android:layout_gravity="left|center_vertical"
+                             android:onClick="onRadioButtonClicked"/>
+                <EditText android:id="@+id/nEditReason"     android:layout_height="match_parent" android:layout_width="match_parent"
+                          android:textSize="@dimen/text_size_large"  android:textColor="@color/body_text_disabled"
+                          android:typeface="monospace"
+                          android:autoText="false"/>
+            </RadioGroup>
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/borderframe">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Issued Quantity"
+                    android:id="@+id/nEditTvQuantity"
+                    android:textSize="@dimen/text_size_large"
+                    android:layout_alignParentLeft="true" android:layout_alignBaseline="@+id/nEditQuantity"
+                    android:textColor="@color/body_text_disabled"/>
+            <EditText
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:selectAllOnFocus="true"
+                    android:lines="1"
+                    android:id="@+id/nEditQuantity"
+                    android:hint="@string/please_enter_issued_quantity"
+                    android:typeface="monospace"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentLeft="true" android:layout_marginLeft="129dp"
+                    android:layout_alignParentTop="true" android:inputType="number">
+            </EditText>
+        </RelativeLayout>
+        <RelativeLayout
+                android:id="@+id/nEditGvIssuedTo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/borderframe" android:layout_marginBottom="8dp" android:layout_marginTop="8dp">
+            <TextView
+                    android:layout_width="97dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/issued_to"   android:textSize="@dimen/text_size_large"
+                    android:id="@+id/nEditTvIssuedTo" android:layout_alignParentLeft="true" android:layout_marginLeft="11dp"
+                    android:layout_alignParentTop="true" android:layout_marginTop="7dp" android:textColor="@color/body_text_disabled" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="fill_parent"
+                        android:layout_height="86dp"
+                        android:orientation="horizontal" android:id="@+id/radioGroupIssue"
+                        android:layout_below="@+id/nTvIssuedTo" android:focusableInTouchMode="true">
+                <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:text="Immunization Session"
+                        android:textColor="@color/body_text_disabled"
+                        android:id="@+id/nEditRdSessionIssuedTo"
+                        android:layout_alignRight="@+id/radioGroupReason" android:layout_alignParentBottom="true"
+                        android:onClick="onRadioButtonClicked"/>
+                <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:text="@string/HealthFacility"    android:textColor="@color/body_text_disabled"
+                        android:id="@+id/nEditRdHealthFacility"
+                        android:layout_alignLeft="@+id/radioGroupReason" android:layout_below="@+id/nEditTvIssuedTo"
+                        android:onClick="onRadioButtonClicked"/>
+            </RadioGroup>
+
+        </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
