@@ -22,6 +22,9 @@ public class Tasks extends Activity implements AdapterView.OnItemClickListener{
     private ListView taskListView;
     private static String TaskName;
     private String VIEW_RECEIVED_ITEMS="viewReceivedItems";
+    private String VIEW_ISSUED_ITEMS="viewIssuedItems";
+    private String VIEW_CHILDREN_VACCINATED="viewChildrenVaccinated";
+
 
     @Override
     public void onCreate(Bundle savedInstance){
@@ -42,7 +45,15 @@ public class Tasks extends Activity implements AdapterView.OnItemClickListener{
         case 0:
             Intent receivedItemIntent=new Intent(this,VaccineDetailListActivity.class);
             receivedItemIntent.putExtra("ACTIVITY",VIEW_RECEIVED_ITEMS);
-            this.startActivity(receivedItemIntent);
+            this.startActivity(receivedItemIntent); break;
+        case 1:
+            Intent issuedItemIntent=new Intent(this,VaccineDetailListActivity.class);
+            issuedItemIntent.putExtra("ACTIVITY",VIEW_ISSUED_ITEMS);
+            this.startActivity(issuedItemIntent);break;
+        case 2:
+            Intent childrenVaccinatedIntent=new Intent(this,VaccineDetailListActivity.class);
+            childrenVaccinatedIntent.putExtra("ACTIVITY",VIEW_CHILDREN_VACCINATED);
+            this.startActivity(childrenVaccinatedIntent);
     }
     }
 
