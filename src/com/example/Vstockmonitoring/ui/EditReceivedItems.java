@@ -31,12 +31,11 @@ public class EditReceivedItems extends Activity {
    private static int  supplier_id;
    private static int  vaccineDetailId;
    private String batchNo;
-   private Date expireDate;
+   private String expireDate;
    private String presentationDosePerVials   ;
    private String vaccineVvm;
    private String manufacture;
-
-
+    private int quantityOnHand;
 
    private EditText batch_no;
    private EditText expiry_date;
@@ -46,7 +45,7 @@ public class EditReceivedItems extends Activity {
    private EditText quantity_on_hand;
    private EditText manufacturer;
    private String   receivedDate ;
-    private TextView vaccine_Name;
+   private TextView vaccine_Name;
 
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
@@ -57,12 +56,26 @@ public class EditReceivedItems extends Activity {
 
     private void LoadActivityValue() {
         //load Ids,
-        //load Received Date
-        receivedDate=getIntent().getExtras().getString("");
-        supplier_id=getIntent().getExtras().getInt("");
-        vaccine_id= getIntent().getExtras().getInt("");
-        vaccineName=getIntent().getExtras().getString("");
+        //load Received Date and set all controls value
+        receivedDate=getIntent().getExtras().getString("receivedDate");
+        supplier_id=getIntent().getExtras().getInt("supplierId");
+        vaccine_id= getIntent().getExtras().getInt("vaccine_id");
+        vaccineName=getIntent().getExtras().getString("vaccine_name");
+        batchNo=getIntent().getExtras().getString("batchNo");
+        expireDate  =getIntent().getExtras().getString("expiryDate");
+        presentationDosePerVials=getIntent().getExtras().getString("presentationDosePerVial");
+        vaccineVvm  =getIntent().getExtras().getString("vvm");
+        quantityOnHand =getIntent().getExtras().getInt("quantityOnHand");
+        manufacture =getIntent().getExtras().getString("manufacturer");
 
+        initControls();
+        batch_no.setText(batchNo.toString(), TextView.BufferType.EDITABLE);
+        expiry_date.setText(expireDate.toString(), TextView.BufferType.EDITABLE);
+        presentation_dose_per_vials.setText(presentationDosePerVials.toString(), TextView.BufferType.EDITABLE);
+        quantity_on_hand.setText(String.valueOf(quantityOnHand), TextView.BufferType.EDITABLE);
+        manufacturer.setText(manufacture.toString(), TextView.BufferType.EDITABLE);
+        //vaccine_vvm.setLabelFor( );
+        //supplier
     }
 
     private void initControls() {
@@ -76,6 +89,7 @@ public class EditReceivedItems extends Activity {
         manufacturer=(EditText)findViewById(R.id.nEditManufacturer) ;
         vaccine_Name=(TextView)findViewById(R.id.nEditSubTitle);
     }
+
     public boolean onCreateOptionsMenu(Menu menu)   {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.modifydelete,menu);
@@ -103,13 +117,10 @@ public class EditReceivedItems extends Activity {
     }
 
     private void editReceivedItems(View viewById) {
-
     }
-
 
     private void deleteReceivedItems(View viewById) {
         Toast.makeText(getApplicationContext(), "Data Deletion is Not Allowed Here", Toast.LENGTH_LONG).show();
     }
-
 
 }

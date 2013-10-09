@@ -52,7 +52,6 @@ public class Tasks extends Activity implements AdapterView.OnItemClickListener{
         inflater.inflate(R.menu.home,menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item)    {
         switch(item.getItemId()){
