@@ -78,7 +78,7 @@
                     android:gravity="left"
                     android:selectAllOnFocus="true"
                     android:lines="1"
-                    android:id="@+id/nEditQuantity"
+                    android:id="@+id/nEditIssuedItemQuantity"
                     android:hint="@string/please_enter_issued_quantity"
                     android:typeface="monospace"
                     android:layout_gravity="right|center_vertical"
@@ -109,7 +109,7 @@
                         android:layout_height="fill_parent"
                         android:text="Immunization Session"
                         android:textColor="@color/body_text_disabled"
-                        android:id="@+id/nEditRdSessionIssuedTo"
+                        android:id="@+id/nEditRdIssuedTo"
                         android:layout_alignRight="@+id/radioGroupReason" android:layout_alignParentBottom="true"
                         android:onClick="onRadioButtonClicked"/>
                 <RadioButton

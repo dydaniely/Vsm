@@ -45,7 +45,8 @@ public class Tasks extends Activity implements AdapterView.OnItemClickListener{
         case 0:
             Intent receivedItemIntent=new Intent(this,VaccineDetailListActivity.class);
             receivedItemIntent.putExtra("ACTIVITY",VIEW_RECEIVED_ITEMS);
-            this.startActivity(receivedItemIntent); break;
+            this.startActivity(receivedItemIntent);
+            break;
         case 1:
             Intent issuedItemIntent=new Intent(this,VaccineDetailListActivity.class);
             issuedItemIntent.putExtra("ACTIVITY",VIEW_ISSUED_ITEMS);
@@ -53,7 +54,7 @@ public class Tasks extends Activity implements AdapterView.OnItemClickListener{
         case 2:
             Intent childrenVaccinatedIntent=new Intent(this,VaccineDetailListActivity.class);
             childrenVaccinatedIntent.putExtra("ACTIVITY",VIEW_CHILDREN_VACCINATED);
-            this.startActivity(childrenVaccinatedIntent);
+            this.startActivity(childrenVaccinatedIntent);break;
     }
     }
 

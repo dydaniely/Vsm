@@ -33,7 +33,7 @@
             android:clickable="false"
             android:focusable="false"
             android:text="@string/IssuedDate"
-            android:textColor="@color/SubTitle"
+            android:textColor="@color/background_1"
             android:textSize="@dimen/TextSize"
             android:textStyle="bold" />
     <TextView
@@ -43,7 +43,7 @@
             android:clickable="false"
             android:focusable="false"
             android:text="@string/IssuedTo"
-            android:textColor="@color/SubTitle"
+            android:textColor="@color/background_1"
             android:textSize="@dimen/TextSize"
             android:textStyle="normal" />
 
@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/IssuedQuantity"
-            android:textColor="@color/SubTitle"
+            android:textColor="@color/background_1"
             android:textStyle="normal"
             android:clickable="false"
             android:focusable="false"

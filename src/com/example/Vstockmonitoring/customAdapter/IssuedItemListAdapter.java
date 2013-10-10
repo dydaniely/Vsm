@@ -40,20 +40,22 @@ public class IssuedItemListAdapter extends ArrayAdapter<Issue> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         itemHolder=new issuedItemHolder();
-        Issue issue= new Issue();
+        Issue issue;
+        issue=new Issue();
         issue=data.get(position);
         LayoutInflater layoutInflater=  (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView==null){
             convertView=layoutInflater.inflate(R.layout.specificissueditemlist,null);
-        }
+
         itemHolder.IssuedDate=(TextView)convertView.findViewById(R.id.nIssuedDate);
         itemHolder.IssuedTo=(TextView)convertView.findViewById(R.id.nIssuedTo);
         itemHolder.IssuedQuantity=(TextView)convertView.findViewById(R.id.nIssuedQuantity);
         convertView.setTag(itemHolder);
+    }
         itemHolder=(issuedItemHolder)convertView.getTag();
-        itemHolder.IssuedQuantity.setText(issue.getIssued_quantity());
-        itemHolder.IssuedDate.setText(issue.getIssued_date());
-        itemHolder.IssuedTo.setText(issue.getIssued_to());
+        itemHolder.IssuedQuantity.setText("Issued Quantity: "+issue.getIssued_quantity());
+        itemHolder.IssuedDate.setText("Issued Date:"+issue.getIssued_date());
+        itemHolder.IssuedTo.setText("Issued To:"+issue.getIssued_to());
         return convertView;
     }
 }

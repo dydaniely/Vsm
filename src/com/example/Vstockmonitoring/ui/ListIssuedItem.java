@@ -1,6 +1,7 @@
 package com.example.Vstockmonitoring.ui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
  */
 public class ListIssuedItem extends Activity implements AdapterView.OnItemClickListener{
 
-   private  Issue issues;
+   private  Issue issue;
    private  Vaccine vaccine;
    private  String vaccine_DetailId;
    private  static   String vaccineName;
@@ -47,15 +48,14 @@ public class ListIssuedItem extends Activity implements AdapterView.OnItemClickL
         Cursor results=issueAdapter.fetchIssuedItemByVaccineDetailId(Long.valueOf(vaccineId));
         if(results.getCount()!=-1){
             while(results.moveToNext()){
-                issues=new Issue();
-
-                issues.setIssued_id(results.getString(0));
-                issues.setVaccine_detail_id(results.getString(1));
-                issues.setIssued_quantity(results.getString(2));
-                issues.setIssued_date(results.getString(3));
-                issues.setIssue_reason(results.getString(4));
-                issues.setIssued_to(results.getString(5));
-                issuedItemList.add(issues);
+                issue=new Issue();
+                issue.setIssued_id(results.getString(0));
+                issue.setVaccine_detail_id(results.getString(1));
+                issue.setIssued_quantity(results.getString(4));
+                issue.setIssued_date(results.getString(3));
+                issue.setIssue_reason(results.getString(5));
+                issue.setIssued_to(results.getString(2));
+                issuedItemList.add(issue );
             }
             IssuedItemListAdapter issuedItemListAdapter= new IssuedItemListAdapter(this,R.layout.specificissueditemlist,issuedItemList);
             listview.setAdapter(issuedItemListAdapter);
@@ -68,13 +68,22 @@ public class ListIssuedItem extends Activity implements AdapterView.OnItemClickL
         vaccineName=getIntent().getExtras().getString("vaccine_name");
         if (vaccineId!=null){
             TextView textView= (TextView)findViewById(R.id.subTitle);
-            textView.setText (  vaccineName + "Issued ");
+            textView.setText (  vaccineName + " Issued List ");
 
         }
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+       issue=new Issue();
+       issue=(Issue)parent.getItemAtPosition(position);
+         Intent intent = new Intent(this,EditIssuedItems.class);
+         intent.putExtra("vaccineDetailId", issue.getVaccine_detail_id() );
+         intent.putExtra("vaccineName",vaccineName );
+         intent.putExtra("issuedDate",issue.getIssued_date() );
+         intent.putExtra("issuedQuantity",issue.getIssued_quantity() );
+         intent.putExtra("issuedTo",issue.getIssued_id());
+         intent.putExtra("issuedReason",issue.getIssue_reason());
+         startActivity(intent);
     }
 }

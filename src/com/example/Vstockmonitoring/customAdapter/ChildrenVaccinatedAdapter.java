@@ -37,22 +37,24 @@ public class ChildrenVaccinatedAdapter extends ArrayAdapter<Children> {
     @Override
     public View getView(int position,View convertView,ViewGroup parent){
         Children children= new Children();
-        children=data.get(position);
+
         childHolder= new childrenHolder();
+        children=data.get(position);
         LayoutInflater layoutInflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView==null){
             layoutInflater.inflate(R.layout.specificchildrenlist,null);
-
         }
-        childHolder.vaccinationDate=(TextView)convertView.findViewById(R.id.nVaccinationDate);
+
         childHolder.ageGreaterThanOne=(TextView)convertView.findViewById(R.id.nAgeGreaterThanOne);
+        childHolder.vaccinationDate=(TextView)convertView.findViewById(R.id.nVaccinationDate);
         childHolder.ageLessThanOne=(TextView)convertView.findViewById(R.id.nAgeLessThanOne);
+
         convertView.setTag(childHolder);
 
         childHolder=(childrenHolder)convertView.getTag();
-        childHolder.vaccinationDate.setText(children.getDate());
-        childHolder.ageGreaterThanOne.setText(children.getOlderThanOne());
-        childHolder.ageLessThanOne.setText(children.getYoungerThanOne());
+        childHolder.vaccinationDate.setText("Vaccination Date : " +children.getDate());
+        childHolder.ageGreaterThanOne.setText("Age older than one: "+children.getOlderThanOne());
+        childHolder.ageLessThanOne.setText("Age younger Than one : " +children.getYoungerThanOne());
         return convertView;
 
     }
