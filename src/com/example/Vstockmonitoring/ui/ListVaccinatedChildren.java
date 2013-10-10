@@ -13,14 +13,13 @@ import com.example.Vstockmonitoring.adapter.ChildrenAdapter;
 import com.example.Vstockmonitoring.customAdapter.ChildrenVaccinatedAdapter;
 import com.example.Vstockmonitoring.model.Children;
 import com.example.Vstockmonitoring.model.Vaccine;
-
 import java.util.ArrayList;
 
 /**
  * Created by DanielY on 10/9/13.
  */
-public class ListVaccinatedChildren extends Activity implements AdapterView.OnItemClickListener {
 
+public class ListVaccinatedChildren extends Activity implements AdapterView.OnItemClickListener {
 
     private  Children children;
     private Vaccine vaccine;
