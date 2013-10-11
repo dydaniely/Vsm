@@ -56,7 +56,7 @@
                              android:layout_gravity="left|center_vertical"
                              android:onClick="onRadioButtonClicked"/>
                 <EditText android:id="@+id/nEditReason"     android:layout_height="match_parent" android:layout_width="match_parent"
-                          android:textSize="@dimen/text_size_large"  android:textColor="@color/body_text_disabled"
+                          android:textSize="@dimen/text_size_large"  android:textColor="@color/background_2"
                           android:typeface="monospace"
                           android:autoText="false"/>
             </RadioGroup>
@@ -82,7 +82,7 @@
                     android:hint="@string/please_enter_issued_quantity"
                     android:typeface="monospace"
                     android:layout_gravity="right|center_vertical"
-                    android:layout_width="wrap_content"
+                    android:layout_width="wrap_content" android:textColor="@color/background_2"
                     android:layout_alignParentLeft="true" android:layout_marginLeft="129dp"
                     android:layout_alignParentTop="true" android:inputType="number">
             </EditText>
@@ -109,7 +109,7 @@
                         android:layout_height="fill_parent"
                         android:text="Immunization Session"
                         android:textColor="@color/body_text_disabled"
-                        android:id="@+id/nEditRdIssuedTo"
+                        android:id="@+id/nEditRdImmunizationSession"
                         android:layout_alignRight="@+id/radioGroupReason" android:layout_alignParentBottom="true"
                         android:onClick="onRadioButtonClicked"/>
                 <RadioButton

@@ -82,7 +82,7 @@ public class ListIssuedItem extends Activity implements AdapterView.OnItemClickL
          intent.putExtra("vaccineName",vaccineName );
          intent.putExtra("issuedDate",issue.getIssued_date() );
          intent.putExtra("issuedQuantity",issue.getIssued_quantity() );
-         intent.putExtra("issuedTo",issue.getIssued_id());
+         intent.putExtra("issuedTo",issue.getIssued_to());
          intent.putExtra("issuedReason",issue.getIssue_reason());
          startActivity(intent);
     }

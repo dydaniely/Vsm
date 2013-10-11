@@ -28,9 +28,9 @@ public class IssuedItemListAdapter extends ArrayAdapter<Issue> {
         this.context = context;
         this.layoutResourceId = layoutResourceId;
         this.data = data;
-
     }
-    static   class issuedItemHolder {
+
+     static   class issuedItemHolder {
         TextView IssuedTo;
         TextView IssuedDate;
         TextView IssuedQuantity;
