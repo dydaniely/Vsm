@@ -59,7 +59,6 @@ public class ListVaccinatedChildren extends Activity implements AdapterView.OnIt
         if(results.getCount()!=-1){
             while(results.moveToNext()){
                 children=new Children();
-
                 children.setChildren_id(results.getInt(0));
                 children.setVaccine_detail_id(results.getInt(1));
                 children.setOlderThanOne(results.getInt(3));

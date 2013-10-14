@@ -26,7 +26,7 @@ public class ListIssuedItem extends Activity implements AdapterView.OnItemClickL
    private  Vaccine vaccine;
    private  String vaccine_DetailId;
    private  static   String vaccineName;
-
+    private static String batchNo;
     private static String vaccineId;
 
     @Override
@@ -55,17 +55,20 @@ public class ListIssuedItem extends Activity implements AdapterView.OnItemClickL
                 issue.setIssued_date(results.getString(3));
                 issue.setIssue_reason(results.getString(5));
                 issue.setIssued_to(results.getString(2));
+               //issue.setBatchNo(batchNo);
                 issuedItemList.add(issue );
+
             }
+
             IssuedItemListAdapter issuedItemListAdapter= new IssuedItemListAdapter(this,R.layout.specificissueditemlist,issuedItemList);
             listview.setAdapter(issuedItemListAdapter);
         }
     }
 
-
     private void LoadActivityItemValue() {
         vaccineId=getIntent().getExtras().getString("vaccine_id");
         vaccineName=getIntent().getExtras().getString("vaccine_name");
+        batchNo=getIntent().getExtras().getString("batchNo");
         if (vaccineId!=null){
             TextView textView= (TextView)findViewById(R.id.subTitle);
             textView.setText (  vaccineName + " Issued List ");
@@ -78,12 +81,14 @@ public class ListIssuedItem extends Activity implements AdapterView.OnItemClickL
        issue=new Issue();
        issue=(Issue)parent.getItemAtPosition(position);
          Intent intent = new Intent(this,EditIssuedItems.class);
+         intent.putExtra("issuedId",issue.getIssued_id());
          intent.putExtra("vaccineDetailId", issue.getVaccine_detail_id() );
          intent.putExtra("vaccineName",vaccineName );
          intent.putExtra("issuedDate",issue.getIssued_date() );
          intent.putExtra("issuedQuantity",issue.getIssued_quantity() );
          intent.putExtra("issuedTo",issue.getIssued_to());
          intent.putExtra("issuedReason",issue.getIssue_reason());
+          intent.putExtra("batchNo",batchNo);
          startActivity(intent);
     }
 }

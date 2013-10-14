@@ -115,7 +115,8 @@
                 <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
-                        android:text="@string/HealthFacility"    android:textColor="@color/body_text_disabled"
+                        android:text="@string/HealthFacility"
+                        android:textColor="@color/body_text_disabled"
                         android:id="@+id/nEditRdHealthFacility"
                         android:layout_alignLeft="@+id/radioGroupReason" android:layout_below="@+id/nEditTvIssuedTo"
                         android:onClick="onRadioButtonClicked"/>

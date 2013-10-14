@@ -34,6 +34,7 @@ public class IssuedItemListAdapter extends ArrayAdapter<Issue> {
         TextView IssuedTo;
         TextView IssuedDate;
         TextView IssuedQuantity;
+
     }
 
     @Override
@@ -50,12 +51,15 @@ public class IssuedItemListAdapter extends ArrayAdapter<Issue> {
         itemHolder.IssuedDate=(TextView)convertView.findViewById(R.id.nIssuedDate);
         itemHolder.IssuedTo=(TextView)convertView.findViewById(R.id.nIssuedTo);
         itemHolder.IssuedQuantity=(TextView)convertView.findViewById(R.id.nIssuedQuantity);
+
         convertView.setTag(itemHolder);
     }
         itemHolder=(issuedItemHolder)convertView.getTag();
+
         itemHolder.IssuedQuantity.setText("Issued Quantity: "+issue.getIssued_quantity());
         itemHolder.IssuedDate.setText("Issued Date:"+issue.getIssued_date());
         itemHolder.IssuedTo.setText("Issued To:"+issue.getIssued_to());
+
         return convertView;
     }
 }

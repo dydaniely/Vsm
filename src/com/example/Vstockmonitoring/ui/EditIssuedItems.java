@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,11 +15,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.Vstockmonitoring.MenuActivity;
 import com.example.Vstockmonitoring.R;
+import com.example.Vstockmonitoring.adapter.IssueAdapter;
+import com.example.Vstockmonitoring.adapter.VaccineDetailAdapter;
 import com.example.Vstockmonitoring.model.Issue;
 
 import org.apache.http.client.protocol.RequestAddCookies;
@@ -27,21 +31,30 @@ import org.apache.http.client.protocol.RequestAddCookies;
  * Created by DanielY on 10/10/13.
  */
 public class EditIssuedItems extends Activity {
+
     private String vaccineDetailId;
     private String vaccineName;
     private String issuedDate;
     private String issuedQuantity;
     private String issuedTo;
-    private String issuedReason ;
-   private   RadioButton rbSession;
-   private RadioButton rbHealthFacility;
-   private  RadioButton rbWithdrawal;
-   private  RadioButton rbImmunizationSession;
+    private String issuedReason;
+    private   String issuedId;
+    private String batchNo;
+    //Widgets
+    private   RadioButton rbSession;
+    private RadioButton rbHealthFacility;
+    private  RadioButton rbWithdrawal;
+    private  RadioButton rbImmunizationSession;
     private EditText issued_Quantity;
     private EditText reason;
     private RadioButton issued_Reason;
     private RadioButton issued_To;
-private Issue issue;
+    private Issue issue =new Issue();
+    private RelativeLayout gvIssuedTo;
+    //objects
+    IssueAdapter issueadapter;
+    VaccineDetailAdapter detailAdapter;
+
     @Override
     public void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
@@ -51,16 +64,17 @@ private Issue issue;
     }
 
     private void LoadActivityValue() {
+        issuedId=getIntent().getExtras().getString("issuedId");
         vaccineDetailId=getIntent().getExtras().getString("vaccineDetailId");
         vaccineName=getIntent().getExtras().getString("vaccineName");
         issuedDate=getIntent().getExtras().getString("issuedDate");
         issuedQuantity=getIntent().getExtras().getString("issuedQuantity");
         issuedTo=getIntent().getExtras().getString("issuedTo");
         issuedReason=getIntent().getExtras().getString("issuedReason") ;
+        batchNo=getIntent().getExtras().getString("batchNo");
         initControls();
-
-
         issued_Quantity.setText(issuedQuantity.toString(), TextView.BufferType.EDITABLE);
+
         issue.setIssued_quantity(issued_Quantity.getText().toString());
         if       (issuedReason.toString().equals("Contamination")
                 || issuedReason.toString().equals("Freezing")
@@ -73,18 +87,20 @@ private Issue issue;
 
             rbWithdrawal.setChecked(true);
             reason.setText(issuedReason.toString(), TextView.BufferType.EDITABLE);
+            gvIssuedTo.setVisibility(View.GONE);
             issue.setIssue_reason(issuedReason.toString());
         }
         else
         {
-            rbSession.setChecked(true);
-            issue.setIssue_reason(issuedReason.toString());
+           rbSession.setChecked(true);
+           issue.setIssue_reason(issuedReason.toString());
+           gvIssuedTo.setVisibility(View.VISIBLE);
         }
         if(issuedTo !=null){
          if (issuedTo.toString().equals("Immunization Session"))
          {
              rbImmunizationSession.setChecked(true);
-             issue.setIssued_to(issuedTo.toString());
+              issue.setIssued_to(issuedTo.toString());
          }
          else
          {
@@ -101,6 +117,7 @@ private Issue issue;
         rbWithdrawal=(RadioButton)findViewById(R.id.nEditRdWithdrawal);
         rbSession=(RadioButton)findViewById(R.id.nEditRdSession);
         reason=(EditText)findViewById(R.id.nEditReason);
+        gvIssuedTo=(RelativeLayout)findViewById(R.id.nEditGvIssuedTo);
     }
 
     public boolean onCreateOptionsMenu(Menu menu)   {
@@ -113,7 +130,11 @@ private Issue issue;
     public boolean onOptionsItemSelected(MenuItem item)   {
         switch(item.getItemId()){
             case R.id.nUpdate:
-                editIssuedItems(findViewById(R.id.nUpdate));
+                try {
+                    editIssuedItems(findViewById(R.id.nUpdate));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 return true;
             case R.id.nDelete:
                 deleteIssuedItems(findViewById(R.id.nDelete));
@@ -128,8 +149,45 @@ private Issue issue;
         }
     }
 
-    private void editIssuedItems(View viewById) {
+    private void editIssuedItems(View viewById) throws Exception {
+        if (Integer.valueOf(issued_Quantity.getText().toString()) <=  Integer.valueOf(issuedQuantity))
+        {
+            //Get issued quantity from vaccine_detail table using vaccine_detail_id
+            Cursor results;
+            issueadapter=new IssueAdapter(this);
+            issueadapter.open();
+            boolean status;
+            issue.setIssued_quantity(issued_Quantity.getText().toString());
+            issue.setIssued_id(issuedId );
+            status=issueadapter.updateIssueTable(Long.valueOf(issuedId), vaccineDetailId ,issue.getIssued_to(), issue.getIssued_quantity(), issue.getIssue_reason());
+            issueadapter.close();
+            if (status!=false)  {
+                detailAdapter= new VaccineDetailAdapter(this);
+                detailAdapter.open();
+                results=detailAdapter.fetchVaccineDetailByUniqueId(Long.valueOf( vaccineDetailId)) ;
+                results.moveToFirst();
+                issuedQuantity=  results.getString(8);
+                Boolean updateStatus;
+            updateStatus= detailAdapter.updateIssuedQuantity(Integer.valueOf(vaccineDetailId),Integer.valueOf(issued_Quantity.getText().toString())
+            );
 
+               if (status!=false && updateStatus==true){
+                    Toast.makeText(getApplicationContext(),"Vaccine Issued successfully",Toast.LENGTH_SHORT).show();
+                     finish();
+                    detailAdapter.close();
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Vaccine Not Issued Successfully",Toast.LENGTH_SHORT).show();
+                finish();
+                    detailAdapter.close();
+                }
+            }
+        }
+        else
+        {
+            issued_Quantity.setError("The Requested quantity more than Quantity On Hand  ");
+        }
     }
 
     private void deleteIssuedItems(View viewById) {
@@ -138,18 +196,22 @@ private Issue issue;
 
     public void onRadioButtonClicked(View view) {
         boolean checked = ((RadioButton) view).isChecked();
-
         if (checked)
         {
             switch (view.getId()){
                 case R.id.nEditRdSession:
                     issue.setIssue_reason(rbSession.getText().toString());
+                    gvIssuedTo.setVisibility(View.VISIBLE);
+                    reason.setVisibility(View.INVISIBLE);
+                    issue.setIssue_reason("N/A");
                     break;
                 case R.id.nEditRdHealthFacility:
                     issue.setIssued_to(rbHealthFacility.getText().toString());break;
                 case R.id.nEditRdImmunizationSession:
                     issue.setIssued_to(rbHealthFacility.getText().toString());break;
                 case R.id.nEditRdWithdrawal:
+                    gvIssuedTo.setVisibility(View.GONE);
+                    reason.setVisibility(View.VISIBLE);
                     issue.setIssued_to("Garbage");
                     int currentApiVersion = android.os.Build.VERSION.SDK_INT;
                     if (currentApiVersion <= Build.VERSION_CODES.GINGERBREAD_MR1){
@@ -199,8 +261,6 @@ private Issue issue;
                         });
                     }
                     break;
-
-
             }
         }
     }
