@@ -32,7 +32,7 @@ public class ListVaccinatedChildren extends Activity implements AdapterView.OnIt
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.specificchildrenlist);
-        ListView listView =(ListView)findViewById(R.id.listView1);
+        ListView listView =(ListView)findViewById(R.id.childrenListView);
         listView.setOnItemClickListener(this);
         LoadActivityItemValue();
         displayChildrenVaccinated();
@@ -44,7 +44,6 @@ public class ListVaccinatedChildren extends Activity implements AdapterView.OnIt
         if (vaccineId!=null){
             TextView textView= (TextView)findViewById(R.id.subTitle);
             textView.setText (  vaccineName + " Vaccinated Children ");
-
         }
 
     }
@@ -54,7 +53,7 @@ public class ListVaccinatedChildren extends Activity implements AdapterView.OnIt
         childrenAdapter=new ChildrenAdapter(this);
         childrenAdapter.open();
         ArrayList<Children>  childrenList =new ArrayList<Children>();
-        final ListView  listview = (ListView) findViewById(R.id.listView1);
+        final ListView  listview = (ListView) findViewById(R.id.childrenListView);
         Cursor results=childrenAdapter.fetchVaccinatedChildrenByVaccineDetailId(Long.valueOf(vaccineId));
         if(results.getCount()!=-1){
             while(results.moveToNext()){
@@ -69,7 +68,6 @@ public class ListVaccinatedChildren extends Activity implements AdapterView.OnIt
             ChildrenVaccinatedAdapter  childrenVaccinatedAdapter= new ChildrenVaccinatedAdapter(this,R.layout.specificchildrenlist,childrenList);
             listview.setAdapter(childrenVaccinatedAdapter);
         }
-
     }
 
     @Override

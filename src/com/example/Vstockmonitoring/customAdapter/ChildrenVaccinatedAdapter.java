@@ -26,9 +26,9 @@ public class ChildrenVaccinatedAdapter extends ArrayAdapter<Children> {
         this.layoutResourceId=layoutResourceId;
         this.data=data;
         this.context=context;
-            }
+    }
 
-    static  class childrenHolder {
+      class childrenHolder {
         TextView  vaccinationDate;
         TextView  ageLessThanOne;
         TextView  ageGreaterThanOne;
@@ -37,17 +37,17 @@ public class ChildrenVaccinatedAdapter extends ArrayAdapter<Children> {
     @Override
     public View getView(int position,View convertView,ViewGroup parent){
         Children children= new Children();
-
         childHolder= new childrenHolder();
         children=data.get(position);
-        LayoutInflater layoutInflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
         if (convertView==null){
+            LayoutInflater layoutInflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             layoutInflater.inflate(R.layout.specificchildrenlist,null);
         }
+        childHolder.ageLessThanOne=(TextView) convertView.findViewById(R.id.nAgeLessThanOne);
+        childHolder.ageGreaterThanOne=(TextView) convertView.findViewById(R.id.nAgeGreaterThanOne);
+        childHolder.vaccinationDate=(TextView) convertView.findViewById(R.id.nVaccinationDate);
 
-        childHolder.ageGreaterThanOne=(TextView)convertView.findViewById(R.id.nAgeGreaterThanOne);
-        childHolder.vaccinationDate=(TextView)convertView.findViewById(R.id.nVaccinationDate);
-        childHolder.ageLessThanOne=(TextView)convertView.findViewById(R.id.nAgeLessThanOne);
 
         convertView.setTag(childHolder);
 

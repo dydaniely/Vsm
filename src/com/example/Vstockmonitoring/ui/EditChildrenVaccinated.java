@@ -53,7 +53,6 @@ public class EditChildrenVaccinated  extends Activity {
 
         tvAgeYoungerThanOne.setText(ageYoungerThanOne, TextView.BufferType.EDITABLE);
         tvAgeOlderThanOne.setText(ageOlderThanOne, TextView.BufferType.EDITABLE);
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu)   {
