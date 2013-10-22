@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="clickhere">
+    <string-array name="clickHere">
         <item>Click Here To select Item</item>
     </string-array>
 </resources>
