@@ -29,6 +29,7 @@ public class Tasks extends Activity implements AdapterView.OnItemClickListener{
     @Override
     public void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
+        setTheme(android.R.style.Theme_DeviceDefault_Light);
         setContentView(R.layout.tasks);
         taskListView=(ListView)findViewById(R.id.lvTaskView);
         taskListView.setOnItemClickListener(this);
