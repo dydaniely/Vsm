@@ -42,6 +42,7 @@
                 android:layout_gravity="center"
                 android:layout_toRightOf="@+id/nEditSupplier"
                 android:layout_marginTop="37dp"/>
+
         <EditText
                 android:id="@+id/nEditQuantity"
                 android:layout_width="fill_parent"
@@ -49,10 +50,11 @@
                 android:gravity="left"
                 android:hint="@string/Quantity"      android:typeface="monospace"
                 android:inputType="number"
-                android:textColor="@color/background_1"
+                android:textColor="@color/body_text_disabled"
                 android:lines="1"
-                android:selectAllOnFocus="true" android:layout_alignLeft="@+id/subTitle"
-                android:layout_below="@+id/nEditpresentaiondosepervials">
+                android:selectAllOnFocus="true"
+            android:layout_below="@+id/tvQuantity"
+            android:layout_alignParentLeft="true">
         </EditText>
         <EditText
                 android:id="@+id/nEditManufacturer"
@@ -64,11 +66,11 @@
                 android:typeface="monospace"
                 android:inputType="textAutoComplete"
                 android:lines="1"
-                android:textColor="@color/background_1"
+                android:textColor="@color/body_text_disabled"
                 android:selectAllOnFocus="true"
-                android:layout_below="@+id/nEditSupplierSpinner"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp">
+            android:layout_below="@+id/nEditSupplierSpinner"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="42dp">
         </EditText>
         <EditText
                 android:id="@+id/nEditpresentaiondosepervials"
@@ -77,10 +79,12 @@
                 android:layout_gravity="fill_horizontal"
                 android:gravity="left"
                 android:hint="@string/presentationOfAntigen"
-                android:inputType="number"    android:typeface="monospace"
-                android:lines="1"       android:textColor="@color/background_1"
+                android:inputType="number"
+               android:typeface="monospace"
+                android:lines="1"       android:textColor="@color/body_text_disabled"
                 android:selectAllOnFocus="true"
-                android:layout_alignParentTop="false" android:layout_marginTop="165dp">
+            android:layout_below="@+id/tvDosePervial"
+            android:layout_alignParentLeft="true">
         </EditText>
         <EditText
                 android:id="@+id/nEditBatchNo"
@@ -89,34 +93,36 @@
                 android:layout_gravity="fill_horizontal"
                 android:gravity="left"
                 android:hint="@string/batchNumber"
-                android:inputType="text"         android:typeface="monospace"
-                android:lines="1"          android:textColor="@color/background_1"
+                android:inputType="text"
+                android:typeface="monospace"
+                android:lines="1"
+                android:textColor="@color/body_text_disabled"
                 android:selectAllOnFocus="true"
-                android:layout_below="@+id/nEditManufacturer"
-                >
+            android:layout_below="@+id/tvBatchNo"
+            android:layout_alignParentLeft="true">
         </EditText>
         <EditText
                 android:id="@+id/nEditexpiredate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.44"
                 android:hint="@string/ExpireDate"
                 android:inputType="date|text" android:typeface="monospace"
-                android:textColor="@color/background_1"
+                android:textColor="@color/body_text_disabled"
                 android:onClick="selectDate"
-                android:labelFor="@+id/nEditSupplier" android:layout_alignLeft="@+id/nEditSupplier"
-                android:layout_below="@+id/nEditQuantity">
+                android:labelFor="@+id/nEditSupplier"
+            android:layout_below="@+id/tvExpireDate"
+            android:layout_alignRight="@+id/nEditSupplierSpinner">
         </EditText>
         <ImageButton
                 android:id="@+id/nEditCalender "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/selectdate"  android:typeface="monospace"
+                android:contentDescription="@string/selectDate"  android:typeface="monospace"
                 android:cropToPadding="true"
                 android:onClick="selectDate"
                 android:src="@drawable/calender"
-                android:layout_alignRight="@+id/nEditQuantity" android:layout_below="@+id/nEditQuantity"/>
-
+            android:layout_alignTop="@+id/nEditexpiredate"
+            android:layout_alignRight="@+id/nEditManufacturer" />
         <Spinner
                 android:id="@+id/nEditvvmspinner"
                 android:layout_width="match_parent"
@@ -125,6 +131,65 @@
                 android:longClickable="false"
                 android:spinnerMode="dropdown"
                 android:textAlignment="textStart"
-                android:layout_alignLeft="@+id/subTitle" android:layout_below="@+id/nEditexpiredate"/>
-        </RelativeLayout>
+            android:layout_below="@+id/nEditCalender "
+            android:layout_alignRight="@+id/nEditSupplierSpinner" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Batch Number"
+            android:id="@+id/tvBatchNo"
+            android:layout_below="@+id/nEditManufacturer"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Dose per Vial"
+            android:id="@+id/tvDosePervial"
+            android:layout_below="@+id/nEditBatchNo"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Quantity"
+            android:id="@+id/tvQuantity"
+            android:layout_alignRight="@+id/tvDosePervial"
+            android:layout_below="@+id/nEditpresentaiondosepervials"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Expire Date"
+            android:id="@+id/tvExpireDate"
+            android:layout_below="@+id/nEditQuantity"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Vvm Stage"
+            android:id="@+id/tvVvm"
+            android:layout_below="@+id/nEditexpiredate"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Manufacturer"
+            android:id="@+id/tvManufacturer"
+            android:layout_alignBottom="@+id/nEditManufacturer"
+            android:layout_alignRight="@+id/tvBatchNo"
+            android:layout_below="@+id/nEditSupplierSpinner" />
+
+
+    </RelativeLayout>
     </ScrollView>
