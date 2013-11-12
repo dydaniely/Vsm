@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:showDividers="beginning|middle|end">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_vertical"
+        android:background="@drawable/borderframe"
+       >
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/nrgDataTransferType">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/SubmitReport"
+            android:textSize="@dimen/text_size_large"
+            android:id="@+id/nTvSubmitReport"
+            android:textColor="@color/actionbar_text" />
+        <RadioButton
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/IssuedItem"
+            android:id="@+id/nRbIssuedData"/>
+        <RadioButton
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/ReceivedItem"
+            android:id="@+id/nRbReceivedItemData"
+            />
+        <RadioButton
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/childrenVaccinated"
+            android:id="@+id/nRbChildrenVaccinatedData"/>
+    </RadioGroup>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent">
+
+        <Button
+            android:text="@string/StartDataTransfer"
+            android:id="@+id/nStartTransfer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="false"
+            android:gravity="center_vertical|center_horizontal"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/StopDataTransfer"
+            android:id="@+id/nStopTransfer"
+            android:focusable="false"
+             android:clickable="true"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:id="@+id/nlProgressStatus"
+        android:layout_width="fill_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ntvProgressStatus"
+        android:layout_gravity="left|center_vertical"
+        android:textColor="@color/Attribute"
+        android:textSize="@dimen/text_size_medium"
+        android:text="@string/status"/>
+    <ProgressBar android:id="@+id/progress_small"
+        android:layout_height="wrap_content" android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_vertical|center_horizontal"
+        android:indeterminate="false"
+        android:longClickable="false"/>
+        </LinearLayout>
+
+</LinearLayout>
