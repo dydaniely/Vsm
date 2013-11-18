@@ -27,6 +27,9 @@ import com.example.Vstockmonitoring.adapter.SupplierAdapter;
 import com.example.Vstockmonitoring.adapter.VaccineDetailAdapter;
 import com.example.Vstockmonitoring.model.VaccineDetails;
 
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeParser;
+
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -163,14 +166,15 @@ public class EditReceivedItems extends FragmentActivity {
         vaccine_vvm.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItem = parent.getItemAtPosition(position).toString();
+                String selectedItem = parent.getItemAtPosition(position).toString().substring(4,5);
+
                 vaccineDetails.setVaccine_vvm(selectedItem);
 
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                vaccineDetails.setVaccine_vvm(parent.getItemAtPosition(0).toString());
+                vaccineDetails.setVaccine_vvm(parent.getItemAtPosition(0).toString().substring(4,5));
             }
         });
         supplier_Info=(Spinner)findViewById(R.id.nEditSupplierSpinner);
@@ -226,14 +230,17 @@ public class EditReceivedItems extends FragmentActivity {
     }
 
     private void editReceivedItems(View viewById) {
+
         detailAdapter=new VaccineDetailAdapter(this);
         detailAdapter.open();
+
+        if (validateData()==true) {
         boolean status;
         vaccineDetails.setBatch_no(batch_no.getText().toString());
         vaccineDetails.setManufacturer(manufacturer.getText().toString());
         vaccineDetails.setQuantity_on_hand(Integer.valueOf(quantity_on_hand.getText().toString()));
         vaccineDetails.setPresentation_dose_vials(presentation_dose_per_vials.getText().toString());
-        vaccineDetails.setExpiry_date(expiry_date.getText().toString());
+        vaccineDetails.setExpiry_date( expiry_date.getText().toString());
         vaccineDetails.setVaccine_id(String.valueOf(vaccine_id));
         vaccineDetails.setVaccine_detail_id(String.valueOf(vaccineDetailId));
         status=detailAdapter.updateVaccineDetail(vaccineDetailId,vaccineDetails.getVaccine_id(), vaccineDetails.getSupplier_id() ,
@@ -244,7 +251,36 @@ public class EditReceivedItems extends FragmentActivity {
             finish();
         }
         detailAdapter.close();
+       }
+
+
     }
+
+    private boolean validateData() {
+        boolean x=true;
+        if (batch_no.getText().toString().isEmpty()){
+            batch_no.setError("This information is required");
+            x=false;
+        }
+
+        else if (manufacturer.getText().toString().isEmpty())
+        { manufacturer.setError("This information is required "); x=false;}
+
+        else if  (quantity_on_hand.getText().toString().isEmpty())
+        {quantity_on_hand.setError("This information is required");x=false;}
+
+        else if (presentation_dose_per_vials.getText().toString().isEmpty())
+        {presentation_dose_per_vials.setError("This information is required");x=false;}
+
+        else if (expiry_date.getText().toString().isEmpty()){expiry_date.setError("This information is required ");
+            expiry_date.setError("This information is required");x=false;
+        }
+        return x;
+
+    }
+
+
+
 
     private void deleteReceivedItems(View viewById) {
         Toast.makeText(getApplicationContext(), "Data Deletion is Not Allowed Here", Toast.LENGTH_LONG).show();

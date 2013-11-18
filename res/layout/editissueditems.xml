@@ -16,7 +16,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/EditIssuedVaccine"
-                android:textColor="@color/Title"
+            android:layout_centerVertical="true"
+            android:textColor="@color/SubTitle"
                 android:textSize="@dimen/text_size_large" />
         <RelativeLayout
                 android:layout_width="match_parent"

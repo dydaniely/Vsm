@@ -22,7 +22,7 @@
             android:text="@string/SubmitReport"
             android:textSize="@dimen/text_size_large"
             android:id="@+id/nTvSubmitReport"
-            android:textColor="@color/actionbar_text" />
+            android:textColor="@color/SubTitle" />
         <RadioButton
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"

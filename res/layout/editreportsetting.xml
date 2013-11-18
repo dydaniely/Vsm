@@ -17,7 +17,7 @@
                 android:layout_marginTop="0dp"
                 android:text="@string/EditReportSetting"
                 android:textAlignment="center"
-                android:textColor="#AA66CC"
+                android:textColor="@color/SubTitle"
                 android:textSize="@dimen/TitleFont" />
 
         <TextView

@@ -12,7 +12,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#AA66CC"
+                android:textColor="@color/SubTitle"
                 android:textSize="@dimen/TitleFont"
                 android:layout_gravity="center"
                 android:focusable="false"
@@ -43,7 +43,7 @@
             android:clickable="false"
             android:focusable="false"
             android:text="@string/IssuedTo"
-            android:textColor="@color/background_1"
+            android:textColor="@color/SubTitle"
             android:textSize="@dimen/TextSize"
             android:textStyle="normal" />
     <TextView
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/IssuedQuantity"
-            android:textColor="@color/background_1"
+            android:textColor="@color/title"
             android:textStyle="normal"
             android:clickable="false"
             android:focusable="false"
