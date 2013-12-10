@@ -38,7 +38,7 @@ public void onCreate(Bundle savedInstanceState)
          super.onCreate(savedInstanceState);
          setContentView(R.layout.vaccinelist);
          displayTypeOfVaccine();
-        ListView listView=(ListView)findViewById(R.id.listView1);
+         ListView listView=(ListView)findViewById(R.id.listView1);
          listView.setOnItemClickListener(this);
         }
 
@@ -77,24 +77,24 @@ public void onCreate(Bundle savedInstanceState)
         inflater.inflate(R.menu.home,menu);
         return true;
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
-            case R.id.nAdd :
-                Intent intent=new Intent(this,CreatVaccineActivity.class )   ;
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                this.startActivity(intent);
-                return true;
-            case R.id.nHome:
-                Intent homeIntent = new Intent(this, MenuActivity.class);
-                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                this.startActivity(homeIntent);
-                return true;
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item){
+            switch (item.getItemId()){
+                case R.id.nAdd :
+                    Intent intent=new Intent(this,CreatVaccineActivity.class )   ;
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    this.startActivity(intent);
+                    return true;
+                case R.id.nHome:
+                    Intent homeIntent = new Intent(this, MenuActivity.class);
+                    homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    this.startActivity(homeIntent);
+                    return true;
 
-            default:
-                return super.onOptionsItemSelected(item);
+                default:
+                    return super.onOptionsItemSelected(item);
+            }
         }
-    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
