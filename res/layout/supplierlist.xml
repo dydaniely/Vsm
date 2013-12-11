@@ -20,11 +20,12 @@
         android:src="@drawable/background33" android:baselineAlignBottom="false"/>
     <TextView
         android:id="@+id/nSupplierNameL"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:textAlignment="textStart"
         android:textSize="18sp"
+        android:clickable="true"
         android:textStyle="bold"
         android:typeface="serif"
         android:layout_alignTop="@+id/imgVaccines"

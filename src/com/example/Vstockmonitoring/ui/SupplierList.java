@@ -34,14 +34,14 @@ public class SupplierList extends Activity implements AdapterView.OnItemClickLis
     SupplierAdapter dbHelper;
     private ArrayList<String> itemList ;
     ArrayList<Supplier> supplierList;
-
     Supplier supplier;
-
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.supplierlist);
         showSupplier();
+        ListView listView=(ListView)findViewById(R.id.listView1);
+        listView.setOnItemClickListener(this);
 
     }
 
@@ -53,7 +53,9 @@ public class SupplierList extends Activity implements AdapterView.OnItemClickLis
             Cursor results;
             supplierList=new ArrayList<Supplier>();
             results=dbHelper.fetchAllSupplier();
-            while(results.getCount()!=-1){
+
+            if (results.getCount()!=-1){
+                while(results.moveToNext()){
                 supplier=new Supplier();
                 supplier.setSupplier_id(results.getString(0));
                 supplier.setSupplier_name(results.getString(1));
@@ -64,8 +66,12 @@ public class SupplierList extends Activity implements AdapterView.OnItemClickLis
             listview.setAdapter(supplierListAdapter);
             results.close();
             dbHelper.close();
+            }
+            results.close();
+            dbHelper.close();
 
-        }catch (Exception ex){
+        }
+        catch (Exception ex){
             Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
         }
     }
@@ -89,7 +95,6 @@ public class SupplierList extends Activity implements AdapterView.OnItemClickLis
         }
     }
 
-
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         supplier=new Supplier();
@@ -101,6 +106,7 @@ public class SupplierList extends Activity implements AdapterView.OnItemClickLis
         this.startActivity(intentSupplier);
 
     }
+
     @Override
     protected void onResume() {
         super.onResume();

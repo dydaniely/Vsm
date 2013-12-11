@@ -64,6 +64,8 @@ public void onCreate(Bundle savedInstanceState)
                 results.close();
                 dbHelper.close();
          }
+            results.close();
+            dbHelper.close();
 
         }
    catch (SQLException e) {
