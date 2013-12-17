@@ -45,7 +45,6 @@ public class ListVaccinatedChildren extends Activity implements AdapterView.OnIt
             TextView textView= (TextView)findViewById(R.id.subTitle);
             textView.setText (  vaccineName + " Vaccinated Children ");
         }
-
     }
 
     private void displayChildrenVaccinated() {
@@ -56,7 +55,8 @@ public class ListVaccinatedChildren extends Activity implements AdapterView.OnIt
         final ListView  listview = (ListView) findViewById(R.id.childrenListView);
         Cursor results=childrenAdapter.fetchVaccinatedChildrenByVaccineDetailId(Long.valueOf(vaccineId));
         if(results.getCount()!=-1){
-            while(results.moveToNext()){
+            results.moveToFirst();
+          do{
                 children=new Children();
                 children.setChildren_id(results.getInt(0));
                 children.setVaccine_detail_id(results.getInt(1));
@@ -64,7 +64,9 @@ public class ListVaccinatedChildren extends Activity implements AdapterView.OnIt
                 children.setYoungerThanOne(results.getInt(2));
                 children.setDate(results.getString(4));
                 childrenList.add(children);
-            }
+          }
+            while (results.moveToNext());
+
             ChildrenVaccinatedAdapter  childrenVaccinatedAdapter= new ChildrenVaccinatedAdapter(this,R.layout.specificchildrenlist,childrenList);
             listview.setAdapter(childrenVaccinatedAdapter);
         }

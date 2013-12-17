@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -74,6 +76,14 @@ public class SupplierList extends Activity implements AdapterView.OnItemClickLis
         catch (Exception ex){
             Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.addnew,menu);
+        inflater.inflate(R.menu.home,menu);
+        return true;
     }
 
     @Override
