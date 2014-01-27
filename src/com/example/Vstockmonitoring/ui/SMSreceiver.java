@@ -39,7 +39,7 @@ public class SMSreceiver extends BroadcastReceiver      {
                             int j=1;
                             while((stringTokenizer.countTokens())>i){
                                 String token=stringTokenizer.nextToken();
-                                vaccineDetailAdapter.updateStatus(Long.valueOf( token) , true);
+                                vaccineDetailAdapter.updateStatus(Long.valueOf( token) , 'D');
                              //   status.setTextSize(24);
                              //   status.setText(  j + " of " + expectedItemToTransfer +      " Records are delivered to server");
                                 j++;
@@ -56,7 +56,7 @@ public class SMSreceiver extends BroadcastReceiver      {
                             int j=1;
                             while((stringTokenizer.countTokens())>i){
                                 String token=stringTokenizer.nextToken();
-                                issueAdapter.updateStatus(Long.valueOf( token) , true);
+                                issueAdapter.updateStatus(Long.valueOf( token) , 'D');
                                // status.setTextSize(24);
                                // status.setText(  j + " of " + expectedItemToTransfer +      " Records are delivered to server");
                                 j++;
@@ -74,11 +74,10 @@ public class SMSreceiver extends BroadcastReceiver      {
                             int j=1;
                             while((stringTokenizer.countTokens())>i){
                                 String token=stringTokenizer.nextToken();
-                                childrenAdapter.updateStatus(Long.valueOf( token) , true);
+                                childrenAdapter.updateStatus(Long.valueOf( token) , 'D');
                                // status.setTextSize(24);
                               //  status.setText(   expectedItemToTransfer-j +  " Records are delivered to server");
                                 j++;
-
                             }
                          //   Toast.makeText(getBaseContext(), "Status Update is confirmed", Toast.LENGTH_SHORT).show();
                             childrenAdapter.close(); break;

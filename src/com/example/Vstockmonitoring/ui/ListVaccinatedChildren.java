@@ -66,7 +66,6 @@ public class ListVaccinatedChildren extends Activity implements AdapterView.OnIt
                 childrenList.add(children);
           }
             while (results.moveToNext());
-
             ChildrenVaccinatedAdapter  childrenVaccinatedAdapter= new ChildrenVaccinatedAdapter(this,R.layout.specificchildrenlist,childrenList);
             listview.setAdapter(childrenVaccinatedAdapter);
         }
