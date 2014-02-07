@@ -74,8 +74,8 @@ public class EditIssuedItems extends Activity {
         batchNo=getIntent().getExtras().getString("batchNo");
         initControls();
         issued_Quantity.setText(issuedQuantity.toString(), TextView.BufferType.EDITABLE);
-
         issue.setIssued_quantity(issued_Quantity.getText().toString());
+
         if       (issuedReason.toString().equals("Contamination")
                 || issuedReason.toString().equals("Freezing")
                 || issuedReason.toString().equals("Expiry Date")
@@ -83,9 +83,8 @@ public class EditIssuedItems extends Activity {
                 || issuedReason.toString().equals("Open Vial Policy")
                 || issuedReason.toString().equals("Missed On Inventory"))
         {
-
-
             rbWithdrawal.setChecked(true);
+            rbSession.setChecked(false);
             reason.setText(issuedReason.toString(), TextView.BufferType.EDITABLE);
             gvIssuedTo.setVisibility(View.GONE);
             issue.setIssue_reason(issuedReason.toString());
@@ -93,18 +92,21 @@ public class EditIssuedItems extends Activity {
         else
         {
            rbSession.setChecked(true);
+            rbWithdrawal.setChecked(false);
            issue.setIssue_reason(issuedReason.toString());
            gvIssuedTo.setVisibility(View.VISIBLE);
         }
         if(issuedTo !=null){
-         if (issuedTo.toString().equals("Immunization Session"))
+         if (issuedTo.toString().equals("Immunization"))
          {
              rbImmunizationSession.setChecked(true);
+             rbHealthFacility.setChecked(false);
               issue.setIssued_to(issuedTo.toString());
          }
          else
          {
             rbHealthFacility.setChecked(true);
+             rbImmunizationSession.setChecked(false);
              issue.setIssued_to(issuedTo.toString());
          }
         }
@@ -150,13 +152,14 @@ public class EditIssuedItems extends Activity {
     }
 
     private void editIssuedItems(View viewById) throws Exception {
-        if (Integer.valueOf(issued_Quantity.getText().toString()) <=  Integer.valueOf(issuedQuantity))
+        if (Integer.valueOf(issued_Quantity.getText().toString()) != 0)
         {
             //Get issued quantity from vaccine_detail table using vaccine_detail_id
             Cursor results;
             issueadapter=new IssueAdapter(this);
             issueadapter.open();
-            boolean status;
+            boolean status=false;
+            Boolean updateStatus=false;
             issue.setIssued_quantity(issued_Quantity.getText().toString());
             issue.setIssued_id(issuedId );
             status=issueadapter.updateIssueTable(Long.valueOf(issuedId), vaccineDetailId ,issue.getIssued_to(), issue.getIssued_quantity(), issue.getIssue_reason());
@@ -167,15 +170,27 @@ public class EditIssuedItems extends Activity {
                 results=detailAdapter.fetchVaccineDetailByUniqueId(Long.valueOf( vaccineDetailId)) ;
                 results.moveToFirst();
                 issuedQuantity=  results.getString(8);
-                Boolean updateStatus;
-            updateStatus= detailAdapter.updateIssuedQuantity(Integer.valueOf(vaccineDetailId),Integer.valueOf(issued_Quantity.getText().toString())
-            );
+
+                if (Integer.valueOf(issued_Quantity.getText().toString())< Integer.valueOf(issuedQuantity)){
+                updateStatus= detailAdapter.updateIssuedQuantity(Integer.valueOf(vaccineDetailId),Integer.valueOf(issued_Quantity.getText().toString())-Integer.valueOf(issuedQuantity));
+                }
+                else {
+                updateStatus= detailAdapter.updateIssuedQuantity(Integer.valueOf(vaccineDetailId), Integer.valueOf(issued_Quantity.getText().toString()) + Integer.valueOf(issuedQuantity));
+                }
+
+
 
                if (status!=false && updateStatus==true){
                     Toast.makeText(getApplicationContext(),"Vaccine Issued successfully",Toast.LENGTH_SHORT).show();
                      finish();
                     detailAdapter.close();
                 }
+                else {
+                   Toast.makeText(getApplicationContext(),"Vaccine Not Issued Successfully",Toast.LENGTH_SHORT).show();
+                   finish();
+                   detailAdapter.close();
+               }
+            }
                 else
                 {
                     Toast.makeText(getApplicationContext(),"Vaccine Not Issued Successfully",Toast.LENGTH_SHORT).show();
@@ -183,10 +198,13 @@ public class EditIssuedItems extends Activity {
                     detailAdapter.close();
                 }
             }
-        }
+
+
+
         else
         {
-            issued_Quantity.setError("The Requested quantity more than Quantity On Hand  ");
+            issued_Quantity.setError("Zero value is not accepted ");
+            finish();
         }
     }
 

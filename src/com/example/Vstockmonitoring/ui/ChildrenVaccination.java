@@ -84,12 +84,12 @@ public class ChildrenVaccination extends Activity {
         adapter.open();
         childrenVaccinated.setYoungerThanOne(Integer.valueOf(youngerThanOne.getText().toString()));
         childrenVaccinated.setOlderThanOne(Integer.valueOf(olderThanOne.getText().toString()));
-        childrenVaccinated.setVaccine_detail_id(Integer.valueOf(vaccineId));
+        childrenVaccinated.setvaccine_id(Integer.valueOf(vaccineId));
         childrenVaccinated.setDate(DateFormat.getDateInstance().format(new Date()));
         long status = 0;
-        adapter.createVaccineatedChildren(childrenVaccinated.getVaccine_detail_id(),
+      status= adapter.createVaccineatedChildren(childrenVaccinated.getvaccine_id(),
                 childrenVaccinated.getYoungerThanOne(),
-                childrenVaccinated.getOlderThanOne()  );
+                childrenVaccinated.getOlderThanOne());
 
         if (status!=-1) {
             Toast.makeText(getApplicationContext(), "Data Saved successfully", Toast.LENGTH_SHORT).show();
@@ -101,12 +101,23 @@ public class ChildrenVaccination extends Activity {
     private void LoadActivityItem() {
 
         TextView titleView= (TextView)findViewById(R.id.subTitle);
+        TextView older=(TextView)findViewById(R.id.tvGreaterThanOne);
+        TextView younger=(TextView)findViewById(R.id.tvLessThanOneYear);
+        EditText youngerEditText=(EditText)findViewById(R.id.nlessthanone);
         vaccineDetailId=getIntent().getExtras().getString("vaccine_detailid");
         vaccineId=getIntent().getExtras().getString("Vaccineid");
         vaccineName=getIntent().getExtras().getString("vaccine_name");
         quanityOnHand=getIntent().getExtras().getInt("quantityOnHand")  ;
         titleView.setText(vaccineName+" "+ "Vaccinated Children");
         olderThanOne.setText("0", TextView.BufferType.EDITABLE);
+        if (Integer.valueOf(vaccineId)==3){
+
+          titleView.setText("TT vaccinated women");
+          youngerEditText.setHint("Number of women vaccinated");
+            younger.setText("Number of women vaccinated");
+          older.setVisibility(View.INVISIBLE);
+          olderThanOne.setVisibility(View.INVISIBLE);
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

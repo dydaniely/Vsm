@@ -51,10 +51,11 @@ public class ListIssuedItem extends Activity implements AdapterView.OnItemClickL
                 issue=new Issue();
                 issue.setIssued_id(results.getString(0));
                 issue.setVaccine_detail_id(results.getString(1));
-                issue.setIssued_quantity(results.getString(4));
-                issue.setIssued_date(results.getString(3));
-                issue.setIssue_reason(results.getString(5));
-                issue.setIssued_to(results.getString(2));
+                issue.setIssued_to(results.getString(3));
+                issue.setIssued_date(results.getString(4));
+                issue.setIssued_quantity(results.getString(5));
+                issue.setIssue_reason(results.getString(6));
+
                //issue.setBatchNo(batchNo);
                 issuedItemList.add(issue );
 

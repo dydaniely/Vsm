@@ -115,12 +115,12 @@ public void onItemClick(AdapterView<?> parent, View view, int position, long id)
         Intent receivedItemIntent = new Intent(this,ListVaccinesActivity.class);
 
         receivedItemIntent.putExtra("vaccine_id",details.getVaccine_id().toString());
+        receivedItemIntent.putExtra("vaccine_detail_id",details.getVaccine_detail_id());
         receivedItemIntent.putExtra("vaccine_name",details.getName());
         receivedItemIntent.putExtra("ACTIVITY",Task.toString());
         this.startActivity(receivedItemIntent);
     }
         else  if (Task.equals("viewIssuedItems")){
-
             Intent issuedItemIntent = new Intent(this,ListIssuedItem.class);
             issuedItemIntent.putExtra("vaccine_id",details.getVaccine_id().toString());
             issuedItemIntent.putExtra("vaccine_name",details.getName());
@@ -154,7 +154,6 @@ public boolean onOptionsItemSelected(MenuItem item)    {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 }
 
 	

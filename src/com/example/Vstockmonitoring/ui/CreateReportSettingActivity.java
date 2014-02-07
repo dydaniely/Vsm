@@ -79,10 +79,14 @@ public class CreateReportSettingActivity extends Activity {
     }
 
     private void backToSettingMenu() {
+        finish();
     }
 
     private void clearForm() {
-
+        report_media.setText("");
+        report_phone.setText("");
+        url_address.setText("");
+        report_period.setText("");
     }
     @Override
     protected void onResume() {

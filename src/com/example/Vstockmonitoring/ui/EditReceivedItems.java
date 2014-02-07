@@ -112,7 +112,7 @@ public class EditReceivedItems extends FragmentActivity {
         //load Received Date and set all controls value
         receivedDate=getIntent().getExtras().getString("receivedDate");
         supplier_id=getIntent().getExtras().getInt("supplierId");
-        vaccineDetailId=getIntent().getExtras().getLong("vaccine_detail_id");
+        vaccineDetailId=Long.parseLong(getIntent().getExtras().getString("vaccine_detail_id"));
         vaccine_id= getIntent().getExtras().getInt("vaccine_id");
         vaccineName=getIntent().getExtras().getString("vaccine_name");
         batchNo=getIntent().getExtras().getString("batchNo");

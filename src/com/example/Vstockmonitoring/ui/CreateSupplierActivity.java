@@ -82,6 +82,8 @@ public class CreateSupplierActivity extends Activity {
 
     private void ClearForm() {
         //To change body of created methods use File | Settings | File Templates.
+        supplierName.setText("");
+        supplierDiscription.setText("");
     }
 
     @Override

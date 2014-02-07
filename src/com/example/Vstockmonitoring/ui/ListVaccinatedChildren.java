@@ -53,13 +53,13 @@ public class ListVaccinatedChildren extends Activity implements AdapterView.OnIt
         childrenAdapter.open();
         ArrayList<Children>  childrenList =new ArrayList<Children>();
         final ListView  listview = (ListView) findViewById(R.id.childrenListView);
-        Cursor results=childrenAdapter.fetchVaccinatedChildrenByVaccineDetailId(Long.valueOf(vaccineId));
+        Cursor results=childrenAdapter.fetchVaccinatedChildrenByVaccineId(Long.valueOf(vaccineId));
         if(results.getCount()!=-1){
             results.moveToFirst();
           do{
                 children=new Children();
                 children.setChildren_id(results.getInt(0));
-                children.setVaccine_detail_id(results.getInt(1));
+                children.setvaccine_id(results.getInt(1));
                 children.setOlderThanOne(results.getInt(3));
                 children.setYoungerThanOne(results.getInt(2));
                 children.setDate(results.getString(4));
@@ -76,7 +76,7 @@ public class ListVaccinatedChildren extends Activity implements AdapterView.OnIt
         children=new Children();
         children=(Children)parent.getItemAtPosition(position);
         Intent childrenIntent= new Intent(this,EditChildrenVaccinated.class);
-        childrenIntent.putExtra("vaccineDetailId",children.getVaccine_detail_id());
+        childrenIntent.putExtra("vaccineId",children.getvaccine_id());
         childrenIntent.putExtra("immunizationDate",children.getDate());
         childrenIntent.putExtra("childrenId",children.getChildren_id());
         childrenIntent.putExtra("ageYoungerThanOne",children.getYoungerThanOne());

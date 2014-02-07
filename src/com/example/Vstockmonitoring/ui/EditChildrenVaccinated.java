@@ -21,7 +21,7 @@ import com.example.Vstockmonitoring.model.Children;
  * Created by DanielY on 10/10/13.
  */
 public class EditChildrenVaccinated  extends Activity {
-    private int vaccineDetailId;
+    private int vaccineId;
     private String immunizationDate;
     private int childrenId;
     private int ageYoungerThanOne;
@@ -44,13 +44,11 @@ public class EditChildrenVaccinated  extends Activity {
     }
 
     private void LoadActivityValue() {
-        vaccineDetailId=getIntent().getExtras().getInt("vaccineDetailId");
+        vaccineId=getIntent().getExtras().getInt("vaccineId");
         immunizationDate=getIntent().getExtras().getString("immunizationDate");
         childrenId=getIntent().getExtras().getInt("childrenId");
         ageYoungerThanOne=getIntent().getExtras().getInt("ageYoungerThanOne");
         ageOlderThanOne=getIntent().getExtras().getInt("ageOlderThanOne");
-
-
         tvAgeYoungerThanOne.setText(ageYoungerThanOne, TextView.BufferType.EDITABLE);
         tvAgeOlderThanOne.setText(ageOlderThanOne, TextView.BufferType.EDITABLE);
     }
