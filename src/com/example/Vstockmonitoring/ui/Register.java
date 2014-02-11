@@ -179,7 +179,7 @@ public class Register extends Activity {
 		    		
 		    		finish();
 	    		} else {
-	    			Toast.makeText(getApplicationContext(), "Failt to create new username",
+	    			Toast.makeText(getApplicationContext(), "Faild to create new username",
 	    			          Toast.LENGTH_SHORT).show();
 	    		}
 	    	}

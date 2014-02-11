@@ -39,7 +39,8 @@ public class ChildrenVaccination extends Activity {
     private String vaccineId;
     private String vaccineName;
     private int quanityOnHand;
-   @Override
+
+    @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vaccinatedchildren);
@@ -119,12 +120,14 @@ public class ChildrenVaccination extends Activity {
           olderThanOne.setVisibility(View.INVISIBLE);
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.home,menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item)    {
         switch(item.getItemId()){

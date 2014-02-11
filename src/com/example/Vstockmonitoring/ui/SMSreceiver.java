@@ -40,8 +40,7 @@ public class SMSreceiver extends BroadcastReceiver      {
                             while((stringTokenizer.countTokens())>i){
                                 String token=stringTokenizer.nextToken();
                                 vaccineDetailAdapter.updateStatus(Long.valueOf( token) , 'D');
-                             //   status.setTextSize(24);
-                             //   status.setText(  j + " of " + expectedItemToTransfer +      " Records are delivered to server");
+
                                 j++;
                             }
                            //Toast.makeText(getBaseContext(), "Status Update is confirmed", Toast.LENGTH_SHORT).show();
@@ -57,15 +56,11 @@ public class SMSreceiver extends BroadcastReceiver      {
                             while((stringTokenizer.countTokens())>i){
                                 String token=stringTokenizer.nextToken();
                                 issueAdapter.updateStatus(Long.valueOf( token) , 'D');
-                               // status.setTextSize(24);
-                               // status.setText(  j + " of " + expectedItemToTransfer +      " Records are delivered to server");
                                 j++;
 
                             }
-                           // Toast.makeText(getBaseContext(), "Status Update is confirmed", Toast.LENGTH_SHORT).show();
-                            issueAdapter.close(); break;
+                          issueAdapter.close(); break;
                         }
-
                         else if (messageCategory.equals("childrenRecord")){
                             ChildrenAdapter childrenAdapter=new ChildrenAdapter( );
                             childrenAdapter.open();
@@ -75,11 +70,8 @@ public class SMSreceiver extends BroadcastReceiver      {
                             while((stringTokenizer.countTokens())>i){
                                 String token=stringTokenizer.nextToken();
                                 childrenAdapter.updateStatus(Long.valueOf( token) , 'D');
-                               // status.setTextSize(24);
-                              //  status.setText(   expectedItemToTransfer-j +  " Records are delivered to server");
-                                j++;
+                              j++;
                             }
-                         //   Toast.makeText(getBaseContext(), "Status Update is confirmed", Toast.LENGTH_SHORT).show();
                             childrenAdapter.close(); break;
                         }
 
@@ -89,13 +81,10 @@ public class SMSreceiver extends BroadcastReceiver      {
                 }
                 break;
             case Activity.RESULT_CANCELED:
-             //   Toast.makeText(getBaseContext(), "SMS not delivered",  Toast.LENGTH_SHORT).show();
                 break;
         }
     }
 }
-
-
 
 
 /*
