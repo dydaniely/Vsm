@@ -30,7 +30,6 @@ public class VaccineDetailListActivity  extends Activity implements AdapterView.
   	static String Task=null;
     private String VIEW_RECEIVED_ITEMS="viewReceivedItems";
 
-  	  	
 public void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.vaccineitems);
@@ -38,7 +37,9 @@ public void onCreate(Bundle savedInstanceState) {
       listView.setOnItemClickListener(this);
       LoadActivityValue();
       displayVaccineDetails();
+
   }
+
 
 private void LoadActivityValue() {
 	//Get & Set ItetnExtra from the mainActivity
@@ -55,17 +56,17 @@ private void displayVaccineDetails(){
       if(results.getCount()!=-1) {
     	  while(results.moveToNext()){
         	details= new VaccineDetails();
-        	details.setVaccine_detail_id(results.getString(1));
+        	details.setVaccine_detail_id(results.getString(0));
         	details.setVaccine_id(results.getString(0));
-        	details.setName(results.getString(2));
-        	if (results.getInt(3)!=0){
-         	details.setQuantity_on_hand(results.getInt(3));
+        	details.setName(results.getString(1));
+        	if (results.getInt(2)!=0){
+         	details.setQuantity_on_hand(results.getInt(2));
         	}
         	else
         	{
-        		details.setQuantity_on_hand(0);
+                details.setQuantity_on_hand(0);
         	}
-              details.setBatch_no(results.getString(4));
+              //details.setBatch_no(results.getString(4));
         	vaccList.add(details);
           }
           VaccineDetailCusAdapter  detailCUA=new VaccineDetailCusAdapter(this, R.layout.vaccineitems, vaccList) ;
@@ -88,7 +89,7 @@ public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	 }
 	 else if(Task.equals("Reciveing")){
 		Intent intent = new Intent(this,VaccineReceivingActivity.class);
-		intent.putExtra("Vaccineid",details.getVaccine_id().toString() );
+		intent.putExtra("Vaccineid",details.getVaccine_id().toString());
 		intent.putExtra("vaccine_name", details.getName());
 		intent.putExtra("vaccine_detailid", details.getVaccine_detail_id());
 		this.startActivity(intent);

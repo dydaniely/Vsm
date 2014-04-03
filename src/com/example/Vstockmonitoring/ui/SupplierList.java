@@ -122,4 +122,6 @@ public class SupplierList extends Activity implements AdapterView.OnItemClickLis
         super.onResume();
         this.onCreate(null);
     }
+
+
 }

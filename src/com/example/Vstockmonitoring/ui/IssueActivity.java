@@ -58,7 +58,7 @@ public class IssueActivity  extends Activity{
         setContentView(R.layout.issuance);
 		initControls();
 		LoadActivityItemValue();
-       //LoadHealthFacilities();
+
 		}
 
     private   ArrayAdapter<String> LoadHealthFacilities() {
@@ -140,18 +140,19 @@ public class IssueActivity  extends Activity{
 			 issueadapter.open();
 			 long status;
              issue.setIssued_quantity(quantity.getText().toString());
+
              status=issueadapter.createissue( vaccineId, Vaccine_detailId ,issue.getIssued_to(), issue.getIssued_quantity(), issue.getIssue_reason());
 			 issueadapter.close();
-			 if (status!=-1)  {
-			 detailAdapter= new VaccineDetailAdapter(this);
-			 detailAdapter.open();
-             results=detailAdapter.fetchVaccineDetailByUniqueId(Long.valueOf( Vaccine_detailId)) ;
-             results.moveToFirst();
-             Issued_quantity=  results.getString(8);
-             Boolean updateStatus;
-             updateStatus= detailAdapter.updateIssuedQuantity(Integer.valueOf(Vaccine_detailId), (Integer.valueOf(issue.getIssued_quantity())+ Integer.valueOf(Issued_quantity)));
 
-                 if (status!=-1 && updateStatus==true){
+			  if (status!=-1)  {
+		    //	 detailAdapter= new VaccineDetailAdapter(this);
+			// detailAdapter.open();
+            //  results=detailAdapter.fetchVaccineDetailByUniqueId(Long.valueOf( Vaccine_detailId)) ;
+            //  results.moveToFirst();
+            //  Issued_quantity=  results.getString(8);
+            //  Boolean updateStatus;
+            //   updateStatus= detailAdapter.updateIssuedQuantity(Integer.valueOf(Vaccine_detailId), (Integer.valueOf(issue.getIssued_quantity())+ Integer.valueOf(Issued_quantity)));
+            //  if (status!=-1 && updateStatus==true){
 				Toast.makeText(getApplicationContext(),"Vaccine Issued successfully",Toast.LENGTH_SHORT).show();
 	             BackToMain();
                 detailAdapter.close();
@@ -162,11 +163,10 @@ public class IssueActivity  extends Activity{
 				BackToMain();
                 detailAdapter.close();
 			}
-             }
+
 			}
 			else
-			{
-				quantity.setError("The Requested quantity has exceeded ");
+			{	quantity.setError("The Requested quantity has exceeded ");
             }
 }
 
@@ -256,7 +256,6 @@ public class IssueActivity  extends Activity{
                               case 0:
                                     issue.setIssue_reason("Contamination");
                                     reason.setText(issue.getIssue_reason());break;
-
                               case 1:issue.setIssue_reason("Freezing");
                                     reason.setText(issue.getIssue_reason());break;
                               case 2:issue.setIssue_reason("Expiry Date");
@@ -304,8 +303,7 @@ public class IssueActivity  extends Activity{
         }
     }
 
-
-    }
+}
 
 
 

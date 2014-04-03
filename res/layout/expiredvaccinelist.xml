@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/subTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/SubTitle"
+        android:textSize="@dimen/TitleFont"
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:focusable="false"
+        android:textIsSelectable="false"/>
+
+    <ListView
+        android:id="@+id/expiredListView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_vertical"
+        android:clickable="true"
+        android:focusable="false"/>
+
+    <TextView
+        android:id="@+id/nExpiredVaccineName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/vaccineName"
+        android:textColor="@color/all_track_color"
+        android:textStyle="bold"
+        android:clickable="false"
+        android:focusable="false"
+        android:textSize="@dimen/text_size_small" />
+
+    <TextView
+        android:id="@+id/nExpiredQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
+        android:text="@string/Quantity"
+        android:textColor="@color/all_track_color"
+        android:textSize="@dimen/text_size_medium"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/nExpiredBatchNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
+        android:textColor="@color/all_track_color"
+        android:text="@string/batchNumber"
+        android:textSize="@dimen/text_size_small"
+        android:textStyle="bold" />
+
+
+
+    <TextView
+        android:id="@+id/nExpiredDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ExpireDate"
+        android:textColor="@color/all_track_color"
+        android:textStyle="bold"
+        android:clickable="false"
+        android:focusable="false"
+        android:textSize="@dimen/text_size_small"/>
+</LinearLayout>   	  
+    

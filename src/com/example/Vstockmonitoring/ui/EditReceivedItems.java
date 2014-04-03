@@ -113,7 +113,7 @@ public class EditReceivedItems extends FragmentActivity {
         receivedDate=getIntent().getExtras().getString("receivedDate");
         supplier_id=getIntent().getExtras().getInt("supplierId");
         vaccineDetailId=Long.parseLong(getIntent().getExtras().getString("vaccine_detail_id"));
-        vaccine_id= getIntent().getExtras().getInt("vaccine_id");
+        vaccine_id= Integer.valueOf(getIntent().getExtras().getString("vaccine_id"));
         vaccineName=getIntent().getExtras().getString("vaccine_name");
         batchNo=getIntent().getExtras().getString("batchNo");
         expireDate  =getIntent().getExtras().getString("expiryDate");
@@ -252,27 +252,28 @@ public class EditReceivedItems extends FragmentActivity {
         }
         detailAdapter.close();
        }
-
-
     }
 
     private boolean validateData() {
         boolean x=true;
-        if (batch_no.getText().toString().isEmpty()){
+
+
+        if ((manufacturer.getText().toString().isEmpty()) || (!manufacturer.getText().toString().matches("^[a-zA-Z]+$")))
+        { manufacturer.setError("This information is required "); x=false;}
+
+        else  if ((batch_no.getText().toString().isEmpty()) ||(!batch_no.getText().toString().matches("^[a-zA-Z0-9]+$"))){
             batch_no.setError("This information is required");
             x=false;
         }
 
-        else if (manufacturer.getText().toString().isEmpty())
-        { manufacturer.setError("This information is required "); x=false;}
+        else if  (presentation_dose_per_vials.getText().toString().isEmpty())
+        {presentation_dose_per_vials.setError("This information is required");x=false;}
 
         else if  (quantity_on_hand.getText().toString().isEmpty())
         {quantity_on_hand.setError("This information is required");x=false;}
 
-        else if (presentation_dose_per_vials.getText().toString().isEmpty())
-        {presentation_dose_per_vials.setError("This information is required");x=false;}
-
-        else if (expiry_date.getText().toString().isEmpty()){expiry_date.setError("This information is required ");
+        else if ((expiry_date.getText().toString().isEmpty()) || (!expiry_date.getText().toString().matches("^([1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d\\d$")))
+        {
             expiry_date.setError("This information is required");x=false;
         }
         return x;

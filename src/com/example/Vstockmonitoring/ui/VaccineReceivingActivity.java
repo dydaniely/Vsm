@@ -56,7 +56,7 @@ public class VaccineReceivingActivity extends FragmentActivity   {
 	    EditText expiry_date;
 	    EditText presentaion_dose_per_vials;
 	    Spinner  vaccine_vvm;
-         Spinner supplier_Info;
+        Spinner supplier_Info;
 	    EditText quantity_on_hand;
 	    EditText manufacturer;	     
 	    String   date ;
@@ -172,7 +172,7 @@ private void initControls() {
             BackToMainMenu(); }});
 }
 
-    protected void BackToMainMenu() {
+ protected void BackToMainMenu() {
 		finish();
 		Intent intent= new Intent(this,VaccineDetailListActivity.class);
 		intent.putExtra("ACTIVITY", RECIVE_EVENT.toString());
@@ -180,35 +180,37 @@ private void initControls() {
 	
 }
 
-    protected void ClearForm()
+ protected void ClearForm()
     {
     }
-    private boolean checkEmptyWrongData() {
-        boolean x=true;
-        if (batch_no.getText().toString().isEmpty()){
-            batch_no.setError("This information is required");
-            x=false;
+private boolean checkEmptyWrongData() {
+
+            boolean x=true;
+
+
+           if ((manufacturer.getText().toString().isEmpty()) || (!manufacturer.getText().toString().matches("^[a-zA-Z]+$")))
+            { manufacturer.setError("This information is required "); x=false;}
+
+           else  if ((batch_no.getText().toString().isEmpty()) ||(!batch_no.getText().toString().matches("^[a-zA-Z0-9]+$"))){
+               batch_no.setError("This information is required");
+               x=false;
+           }
+
+            else if  (presentaion_dose_per_vials.getText().toString().isEmpty())
+            {presentaion_dose_per_vials.setError("This information is required");x=false;}
+
+           else if  (quantity_on_hand.getText().toString().isEmpty())
+           {quantity_on_hand.setError("This information is required");x=false;}
+
+            //else if ((expiry_date.getText().toString().isEmpty()) || (expiry_date.getText().toString().matches("^([1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d\\d$")))
+           //{
+              //  expiry_date.setError("This information is required");x=false;
+           //}
+            return x;
+
         }
 
-        else if (manufacturer.getText().toString().isEmpty())
-        { manufacturer.setError("This information is required "); x=false;}
-
-        else if  (quantity_on_hand.getText().toString().isEmpty())
-        {quantity_on_hand.setError("This information is required");x=false;}
-
-        else if (presentaion_dose_per_vials.getText().toString().isEmpty())
-        {presentaion_dose_per_vials.setError("This information is required");x=false;}
-
-        else if (expiry_date.getText().toString().isEmpty()){expiry_date.setError("This information is required");
-            expiry_date.setError("This information is required");x=false;
-        }
-       return x;
-
-        }
-
-
-
-    protected void RegisterVaccineDetails(View v)  {
+ protected void RegisterVaccineDetails(View v)  {
          int currentApiVersion = android.os.Build.VERSION.SDK_INT;
           if (currentApiVersion<= Build.VERSION_CODES.GINGERBREAD_MR1){
               vaccineDetailAdapter=new VaccineDetailAdapter(this);

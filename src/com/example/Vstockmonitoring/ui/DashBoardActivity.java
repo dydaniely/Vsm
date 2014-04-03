@@ -36,10 +36,10 @@ public class DashBoardActivity extends  Activity {
     static long TotalValue=0;
     static long TotalChildrenVaccinated=0;
     static Double currentMonthWastageRate=0.0;
-    private   long bBalance=0;
-    private   long eBalance=0;
-    private   long rDuringMonth=0;
-    private    double vUsageRate=0.0;
+    private long bBalance=0;
+    private long eBalance=0;
+    private long rDuringMonth=0;
+    private double vUsageRate=0.0;
 
     private DateTime dt;
     private Button  btn_service;
@@ -75,8 +75,6 @@ public class DashBoardActivity extends  Activity {
              /* Children Immunization   */
 
             results=adapter.CIBM(actualCurrentMonth) ;
-
-
             if (results.getCount()==0)
             {  TotalChildrenVaccinated=0;}
             else {
@@ -104,7 +102,6 @@ public class DashBoardActivity extends  Activity {
             vUsageRate=  TotalChildrenVaccinated/denominator;
              currentMonthWastageRate= 100-vUsageRate;
             }
-
 
             /*_____--------------------------------------------------*/
                 adapter.close();
@@ -174,8 +171,6 @@ public class DashBoardActivity extends  Activity {
                //  startService( new Intent(getApplicationContext(),ServiceCommunicator.class));
                 // btn_service=(Button) findViewById(R.id.nService);
                  //btn_service.setText("Stop");
-
-
                 // Intent s = new Intent(this, ServiceCommunicator.class);
                  //startService(s);
                  //

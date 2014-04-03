@@ -40,13 +40,13 @@ public class ChildrenVaccination extends Activity {
     private String vaccineName;
     private int quanityOnHand;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.vaccinatedchildren);
-        initControls();
-        LoadActivityItem();
-}
+        @Override
+        public void onCreate(Bundle savedInstanceState){
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.vaccinatedchildren);
+            initControls();
+            LoadActivityItem();
+    }
 
     private void initControls() {
         youngerThanOne=(EditText)findViewById(R.id.nlessthanone);
@@ -140,6 +140,5 @@ public class ChildrenVaccination extends Activity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 
 }

@@ -40,7 +40,6 @@ public class SMSreceiver extends BroadcastReceiver      {
                             while((stringTokenizer.countTokens())>i){
                                 String token=stringTokenizer.nextToken();
                                 vaccineDetailAdapter.updateStatus(Long.valueOf( token) , 'D');
-
                                 j++;
                             }
                            //Toast.makeText(getBaseContext(), "Status Update is confirmed", Toast.LENGTH_SHORT).show();
@@ -86,7 +85,6 @@ public class SMSreceiver extends BroadcastReceiver      {
     }
 }
 
-
 /*
 public void onReceive(Context context, Intent intent) {
         Bundle extras = intent.getExtras();
@@ -94,17 +92,13 @@ public void onReceive(Context context, Intent intent) {
         if ( extras != null )
         {
             Object[] smsextras = (Object[]) extras.get( "pdus" );
-
             for ( int i = 0; i < smsextras.length; i++ )
             {
                 SmsMessage smsmsg = SmsMessage.createFromPdu((byte[])smsextras[i]);
                 String strMsgBody = smsmsg.getMessageBody().toString();
                 String strMsgSrc = smsmsg.getOriginatingAddress();
-
                 strMessage += "SMS from " + strMsgSrc + " : " + strMsgBody;
-
                 Log.i(TAG, strMessage);
-
             }
     }
 }

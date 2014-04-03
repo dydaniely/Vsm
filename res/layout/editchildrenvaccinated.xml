@@ -17,8 +17,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="0.07"
                 android:textColor="@color/SubTitle"
-
-                    android:layout_centerVertical="true"
+               android:layout_centerVertical="true"
             android:textSize="@dimen/TitleFont" />
     </LinearLayout>
     <LinearLayout

@@ -30,9 +30,8 @@ public class ListVaccinesActivity  extends Activity implements AdapterView.OnIte
 	Vaccine vaccine;
 	String vaccine_detailid;
     static   String vaccinename;
-
     private static String vaccine_id;
-private static String Task;
+    private static String Task;
     private static String supplierId;
     private static String batchNo;
     private static String expiryDate;

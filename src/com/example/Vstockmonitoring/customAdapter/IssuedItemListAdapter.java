@@ -43,7 +43,7 @@ public class IssuedItemListAdapter extends ArrayAdapter<Issue> {
         itemHolder=new issuedItemHolder();
         Issue issue;
         issue=new Issue();
-        issue=data.get(position);
+        issue   =data.get(position);
         LayoutInflater layoutInflater=  (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView==null){
             convertView=layoutInflater.inflate(R.layout.specificissueditemlist,null);

@@ -74,6 +74,7 @@ public class ReportSettingListActivity extends Activity implements AdapterView.O
         inflater.inflate(R.menu.home,menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){

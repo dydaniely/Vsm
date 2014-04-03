@@ -33,8 +33,8 @@
             android:clickable="false"
             android:focusable="false"
             android:text="@string/VaccinationDate"
-            android:textColor="@color/background_1"
-            android:textSize="@dimen/TextSize"
+            android:textColor="@color/all_track_color"
+            android:textSize="@dimen/text_size_large"
             android:textStyle="bold" />
     <TextView
             android:id="@+id/nAgeLessThanOne"
@@ -44,8 +44,8 @@
             android:focusable="false"
             android:inputType="number"
             android:text="@string/AgeLessThanOne"
-            android:textColor="@color/background_1"
-            android:textSize="@dimen/TextSize"
+            android:textColor="@color/all_track_color"
+            android:textSize="@dimen/text_size_medium"
             android:textStyle="normal" />
 
     <TextView
@@ -53,11 +53,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/AgeGreaterThanOne"
-            android:textColor="@color/background_1"
+            android:textColor="@color/all_track_color"
             android:textStyle="normal"
             android:clickable="false"
             android:focusable="false"
-            android:textSize="@dimen/TextSize" />
+            android:textSize="@dimen/text_size_medium" />
 
 </LinearLayout>   	  
     
