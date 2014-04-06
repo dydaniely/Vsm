@@ -84,7 +84,13 @@ public class EditReceivedItems extends FragmentActivity {
 
     public void populateSetDate(int year, int month, int day) {
         expiry_date = (EditText)findViewById(R.id.nEditexpiredate);
-        expiry_date.setText(month+"/"+day+"/"+year);
+        String month1;
+        String day1;
+        String year1;
+        if (month <10){ month1= "0"+month;}else {month1= String.valueOf(month);}
+        if (day  <10){ day1= "0"+day;}else {day1= String.valueOf(day);}
+        year1=String.valueOf(year);
+        expiry_date.setText(year1+"-"+month1+"-"+day1);
     }
 
     public class SelectDateFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener{
@@ -104,9 +110,6 @@ public class EditReceivedItems extends FragmentActivity {
 
     }
     /** EDN CALENDER **/
-
-
-
     private void LoadActivityValue() {
         //load Ids,
         //load Received Date and set all controls value
@@ -243,21 +246,22 @@ public class EditReceivedItems extends FragmentActivity {
         vaccineDetails.setExpiry_date( expiry_date.getText().toString());
         vaccineDetails.setVaccine_id(String.valueOf(vaccine_id));
         vaccineDetails.setVaccine_detail_id(String.valueOf(vaccineDetailId));
+        vaccineDetails.setStatus('N');
         status=detailAdapter.updateVaccineDetail(vaccineDetailId,vaccineDetails.getVaccine_id(), vaccineDetails.getSupplier_id() ,
                 vaccineDetails.getBatch_no(),  vaccineDetails.getExpiry_date(),  vaccineDetails.getPresentation_dose_vials(),
-                vaccineDetails.getVaccine_vvm(),  vaccineDetails.getQuantity_on_hand(),vaccineDetails.getManufacturer());
+                vaccineDetails.getVaccine_vvm(),  vaccineDetails.getQuantity_on_hand(),vaccineDetails.getManufacturer(),vaccineDetails.isStatus( ));
         if (status!=false){
             Toast.makeText(getApplicationContext(), "data saved Successfully", Toast.LENGTH_LONG).show();
             finish();
+
         }
         detailAdapter.close();
+            finish();
        }
     }
 
     private boolean validateData() {
         boolean x=true;
-
-
         if ((manufacturer.getText().toString().isEmpty()) || (!manufacturer.getText().toString().matches("^[a-zA-Z]+$")))
         { manufacturer.setError("This information is required "); x=false;}
 
@@ -271,17 +275,8 @@ public class EditReceivedItems extends FragmentActivity {
 
         else if  (quantity_on_hand.getText().toString().isEmpty())
         {quantity_on_hand.setError("This information is required");x=false;}
-
-        else if ((expiry_date.getText().toString().isEmpty()) || (!expiry_date.getText().toString().matches("^([1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d\\d$")))
-        {
-            expiry_date.setError("This information is required");x=false;
-        }
         return x;
-
     }
-
-
-
 
     private void deleteReceivedItems(View viewById) {
         Toast.makeText(getApplicationContext(), "Data Deletion is Not Allowed Here", Toast.LENGTH_LONG).show();

@@ -57,9 +57,6 @@
         android:text="@string/batchNumber"
         android:textSize="@dimen/text_size_small"
         android:textStyle="bold" />
-
-
-
     <TextView
         android:id="@+id/nExpiredDate"
         android:layout_width="wrap_content"

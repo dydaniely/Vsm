@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="Modification_Menu">
-        <item>1. Received Vaccine</item>
-        <item>2. Issued Vaccine</item>
-        <item>3. Children Vaccinated</item>
+        <item>Received Vaccine</item>
+        <item>Children Vaccinated</item>
     </string-array>
 </resources>

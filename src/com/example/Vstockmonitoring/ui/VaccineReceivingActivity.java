@@ -8,6 +8,7 @@ import java.util.Date;
 
 import android.content.DialogInterface;
 import android.os.Build;
+import android.renderscript.Sampler;
 import android.support.v4.app.FragmentActivity;
 
 
@@ -74,9 +75,7 @@ public void onCreate(Bundle savedInstanceState) {
         LoadActivityItem();
         initControls();
 		}
-
  /** BEGIN CALENDER **/
-
 public void selectDate(View view) {
  DialogFragment dialogFragment= new SelectDateFragment();
     dialogFragment.show(getSupportFragmentManager(), "datePicker");
@@ -84,7 +83,13 @@ public void selectDate(View view) {
 
 public void populateSetDate(int year, int month, int day) {
 expiry_date = (EditText)findViewById(R.id.nexpiredate);
-expiry_date.setText(month+"/"+day+"/"+year);
+    String month1;
+    String day1;
+    String year1;
+    if (month <10){ month1= "0"+month;}else {month1= String.valueOf(month);}
+    if (day  <10){ day1= "0"+day;}else {day1= String.valueOf(day);}
+  year1=String.valueOf(year);
+expiry_date.setText(year1+"-"+month1+"-"+day1);
 }
 
 public class SelectDateFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener{
@@ -180,9 +185,10 @@ private void initControls() {
 	
 }
 
- protected void ClearForm()
-    {
+protected void ClearForm()
+{
     }
+
 private boolean checkEmptyWrongData() {
 
             boolean x=true;
@@ -210,7 +216,7 @@ private boolean checkEmptyWrongData() {
 
         }
 
- protected void RegisterVaccineDetails(View v)  {
+protected void RegisterVaccineDetails(View v)  {
          int currentApiVersion = android.os.Build.VERSION.SDK_INT;
           if (currentApiVersion<= Build.VERSION_CODES.GINGERBREAD_MR1){
               vaccineDetailAdapter=new VaccineDetailAdapter(this);

@@ -24,14 +24,14 @@ public class ExpiredItems extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.expireditems);
         displayVaccineDetails();
-             }
+    }
 
     private void displayVaccineDetails(){
         VaccineDetailAdapter dbHelper;
-        ArrayList<VaccineDetails> vaccList = new ArrayList<VaccineDetails>();
+        ArrayList<VaccineDetails> vaccineDetailsArrayList = new ArrayList<VaccineDetails>();
         dbHelper=new VaccineDetailAdapter(this);
         dbHelper.open();
-        final ListView listview = (ListView) findViewById(R.id.listView1);
+        final ListView listview = (ListView) findViewById(R.id.expiredListView1);
         Cursor results = dbHelper.fetchItemsToBeExpired();
         if(results.getCount()!=-1) {
             while(results.moveToNext()){
@@ -39,17 +39,18 @@ public class ExpiredItems extends Activity {
                 details.setVaccine_detail_id(results.getString(0));
                 details.setVaccine_id(results.getString(1));
                 details.setName(results.getString(2));
-                if (results.getInt(3)!=0){
-                    details.setQuantity_on_hand(results.getInt(32));
-                }
-                else
-                {
-                    details.setQuantity_on_hand(0);
-                }
-                //details.setBatch_no(results.getString(4));
-                vaccList.add(details);
+                details.setQuantity_on_hand(results.getInt(3));
+                details.setExpiry_date(results.getString(4));
+                details.setBatch_no(results.getString(5));
+                details.setSupplier_id(results.getString(6));
+                details.setVaccine_vvm(results.getString(7));
+                details.setPresentation_dose_vials(results.getString(8));
+                details.setManufacturer(results.getString(9));
+                details.setIssued_quantity(results.getString(10));
+                details.setDate(results.getString(11));
+                vaccineDetailsArrayList.add(details);
             }
-            ExpiredItemsAdapter expiredItemsAdapter =new ExpiredItemsAdapter(this, R.layout.vaccineitems, vaccList) ;
+            ExpiredItemsAdapter expiredItemsAdapter=new ExpiredItemsAdapter(this,R.layout.expiredvaccinelist,vaccineDetailsArrayList);
             listview.setAdapter(expiredItemsAdapter);
         }
         results.close();

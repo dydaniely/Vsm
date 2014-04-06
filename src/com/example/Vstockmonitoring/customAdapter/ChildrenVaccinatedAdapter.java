@@ -15,6 +15,7 @@ import java.util.ArrayList;
 /**
  * Created by DanielY on 10/9/13.
  */
+
 public class ChildrenVaccinatedAdapter extends ArrayAdapter<Children> {
     Context context;
     int layoutResourceId;
@@ -33,6 +34,7 @@ public class ChildrenVaccinatedAdapter extends ArrayAdapter<Children> {
         TextView  ageLessThanOne;
         TextView  ageGreaterThanOne;
     }
+
     @Override
     public View getView(int position,View convertView,ViewGroup parent){
         Children children= new Children();
@@ -40,14 +42,12 @@ public class ChildrenVaccinatedAdapter extends ArrayAdapter<Children> {
         children=data.get(position);
         LayoutInflater layoutInflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView==null){
-
             layoutInflater.inflate(R.layout.specificchildrenlist,null);
-
         childHolder.ageLessThanOne=(TextView) convertView.findViewById(R.id.nAgeLessThanOne);
         childHolder.ageGreaterThanOne=(TextView) convertView.findViewById(R.id.nAgeGreaterThanOne);
         childHolder.vaccinationDate=(TextView) convertView.findViewById(R.id.nVaccinationDate);
         convertView.setTag(childHolder);
-        }
+      }
         childHolder=(childrenHolder)convertView.getTag();
         childHolder.vaccinationDate.setText("Vaccination Date : " +children.getDate());
         childHolder.ageGreaterThanOne.setText("Age older than one: "+children.getOlderThanOne());

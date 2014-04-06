@@ -75,6 +75,7 @@ private void displayVaccineDetails(){
       results.close();
       dbHelper.close();
 }
+
 @Override
 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         details= new VaccineDetails();
@@ -155,6 +156,7 @@ public boolean onOptionsItemSelected(MenuItem item)    {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }
 
 	

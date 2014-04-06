@@ -19,8 +19,6 @@ public class ExpiredItemsAdapter  extends ArrayAdapter<VaccineDetails>{
     Context context;
     int layoutResourceId;
     private ArrayList<VaccineDetails> data = null;
-    TextView vname;
-    TextView vQuantity;
     Holder holder=null;
 
     public ExpiredItemsAdapter(Context context, int layoutResourceId,ArrayList<VaccineDetails> data) {
@@ -40,7 +38,6 @@ public class ExpiredItemsAdapter  extends ArrayAdapter<VaccineDetails>{
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         holder =new Holder();
         VaccineDetails details = new VaccineDetails();
         details= data.get(position) ;
@@ -57,10 +54,10 @@ public class ExpiredItemsAdapter  extends ArrayAdapter<VaccineDetails>{
         convertView.setTag(holder);
 
         holder=  (Holder)convertView.getTag();
-        holder.Quantity.setText("Quantity: "+ String.valueOf(details.getQuantity_on_hand()));
-        holder.BatchNo.setText("Batch #: " + details.getBatch_no());
+        holder.Quantity.setText("Quantity:"+ String.valueOf(details.getQuantity_on_hand()));
+        holder.BatchNo.setText("Batch #:" + details.getBatch_no());
         holder.ExpiredDate.setText("Ex.date: "+details.getExpiry_date());
-        holder.VaccineName.setText("Vaccine Name : "+details.getVaccine_vvm());
+        holder.VaccineName.setText("Vaccine Name : "+details.getName());
         return convertView;
     }
 }

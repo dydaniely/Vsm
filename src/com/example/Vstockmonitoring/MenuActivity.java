@@ -39,9 +39,10 @@ public class MenuActivity extends   Activity    {
     public void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.main_new);
+    //  status=isThereAnyExpiredItem();
     }
 
-    private boolean isThereAnyExpiredItem() {
+    private boolean isThereAnyExpiredItem()     {
         dbHelper= new VaccineDetailAdapter(this);
         dbHelper.open();
         Cursor  result;
@@ -64,37 +65,15 @@ public class MenuActivity extends   Activity    {
         // Actions are just fake
         Notification noti = new Notification.Builder(this)
                 .setContentTitle("Vaccines are about to be expired in the next month, please take action")
-                .setContentText("Expired Vaccine").setSmallIcon(R.drawable.ic_launcher)
+                .setContentText("Expired Vaccine").setSmallIcon(R.drawable.ic_menu_stop)
                 .setContentIntent(pIntent)
-                .addAction(R.drawable.ic_launcher, "Expired Item", pIntent).build();
+                .addAction(R.drawable.ic_menu_stop, "Expired Vaccine", pIntent).build();
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         // hide the notification after its selected
         noti.flags |= Notification.FLAG_AUTO_CANCEL;
         notificationManager.notify(0, noti);
-
-
-       /* mNotificationManager =
-                (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-        final Notification notifyDetails =
-                new Notification(R.drawable.ic_launcher,
-                        "You've got a new notification!",System.currentTimeMillis());
-                Context context = getApplicationContext();
-                CharSequence contentTitle =
-                        "Notification Details...";
-                CharSequence contentText =
-                        "Browse Android Official Site by clicking me";
-                Intent notifyIntent = new Intent(android.content.Intent.ACTION_VIEW,
-                                Uri.parse("http://www.android.com"));
-        Intent intent= new Intent(Intent.ACTION_VIEW ,)
-                PendingIntent intent =
-                        PendingIntent.getActivity(MenuActivity.this, 0,
-                                notifyIntent, android.content.Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                notifyDetails.setLatestEventInfo(context,
-                        contentTitle, contentText, intent);
-                mNotificationManager.notify(SIMPLE_NOTFICATION_ID, notifyDetails);*/
-            }
+    }
 
     public void onClickHomeLink(View view){
         switch(view.getId()){
@@ -106,7 +85,6 @@ public class MenuActivity extends   Activity    {
                 Intent VaccineDetailIntent=new Intent(this, VaccineDetailListActivity.class);
                 VaccineDetailIntent.putExtra("ACTIVITY", RECEIVE_EVENT.toString());
                 this.startActivity(VaccineDetailIntent);
-                status=isThereAnyExpiredItem();
                 break;
             case R.id.nViewItems:
                 Intent viewIntent=new Intent(this,Tasks.class);

@@ -368,7 +368,7 @@ public class MessageMangerActivity extends Activity {
                                         String token=stringTokenizer.nextToken();
                                         vaccineDetailAdapter.updateStatus(Long.valueOf( token) , 'D');
                                         status.setTextSize(24);
-                                        status.setText(    expectedItemToTransfer +      " Records are delivered to server");
+                                        status.setText( " Records are delivered to server");
                                         j++;
                                         mProgress.setMax((int)expectedItemToTransfer);
                                         mProgress.setProgress((j));
@@ -386,7 +386,7 @@ public class MessageMangerActivity extends Activity {
                                         String token=stringTokenizer.nextToken();
                                         issueAdapter.updateStatus(Long.valueOf( token) , 'D');
                                        status.setTextSize(24);
-                                        status.setText(  expectedItemToTransfer +      " Records are delivered to server");
+                                        status.setText(  " Records are delivered to server");
                                         j++;
                                     }
                                     Toast.makeText(getBaseContext(), "Status Update is confirmed", Toast.LENGTH_SHORT).show();

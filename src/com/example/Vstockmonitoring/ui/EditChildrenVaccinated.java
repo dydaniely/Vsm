@@ -94,7 +94,8 @@ public class EditChildrenVaccinated  extends Activity {
         children.setChildren_id(childrenId);
         children.setOlderThanOne(Integer.valueOf(tvAgeOlderThanOne.getText().toString()));
         children.setYoungerThanOne(Integer.valueOf(tvAgeYoungerThanOne.getText().toString()));
-          status=childrenAdapter.updateChildren(childrenId, children.getYoungerThanOne(), children.getOlderThanOne());
+        children.setStatus('N');
+          status=childrenAdapter.updateChildren(childrenId, children.getYoungerThanOne(), children.getOlderThanOne(),children.isStatus());
         childrenAdapter.close();
         if (status!=false){
             Toast.makeText(getApplicationContext(), "Data Saved successfully", Toast.LENGTH_SHORT).show();

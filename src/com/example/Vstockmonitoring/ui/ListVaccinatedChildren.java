@@ -43,7 +43,7 @@ public class ListVaccinatedChildren extends Activity implements AdapterView.OnIt
         vaccineName=getIntent().getExtras().getString("vaccine_name");
         if (vaccineId!=null){
             TextView textView= (TextView)findViewById(R.id.subTitle);
-            textView.setText (  vaccineName + " Vaccinated ");
+            textView.setText (vaccineName + " Vaccinated ");
         }
     }
 
@@ -62,7 +62,7 @@ public class ListVaccinatedChildren extends Activity implements AdapterView.OnIt
                 children.setvaccine_id(Integer.valueOf(results.getString(1)));
 
                 children.setYoungerThanOne(Integer.valueOf(results.getString(2)));
-                   children.setOlderThanOne(Integer.valueOf(results.getString(3)));
+                children.setOlderThanOne(Integer.valueOf(results.getString(3)));
                 children.setDate(results.getString(4));
                 childrenList.add(children);
           }
@@ -83,6 +83,5 @@ public class ListVaccinatedChildren extends Activity implements AdapterView.OnIt
         childrenIntent.putExtra("ageYoungerThanOne",children.getYoungerThanOne());
         childrenIntent.putExtra("ageOlderThanOne",children.getOlderThanOne());
         this.startActivity(childrenIntent);
-
     }
 }
